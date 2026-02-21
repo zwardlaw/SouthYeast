@@ -28,12 +28,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Compass displays a calibration state instead of garbage data when heading accuracy is unreliable
   4. Selecting a different place in the carousel causes the compass to immediately re-target
   5. App resumes correct heading on foreground restore after backgrounding
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: Project scaffold — Swift 6 / SwiftUI target, PrivacyInfo.xcprivacy, app lifecycle wiring
-- [ ] 01-02: LocationService — CLLocationManager @Observable wrapper, permission state machine, heading + GPS publishing
-- [ ] 01-03: Compass math and view — bearing calculation, 0/360 wrap handling, trueHeading subtraction, calibration state, CompassView with rotation
+- [ ] 01-01-PLAN.md — Xcode project scaffold with Swift 6, PrivacyInfo.xcprivacy, Info.plist, folder structure
+- [ ] 01-02-PLAN.md — LocationService @Observable wrapper, permission state machine, PlacesService stub
+- [ ] 01-03-PLAN.md — BearingMath with unit tests, AppState accumulated rotation, CompassView, ContentView routing, lifecycle
 
 ### Phase 2: Places and Discovery
 **Goal**: Users can find, browse, and navigate to real nearby pizza places
