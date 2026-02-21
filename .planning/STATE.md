@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-21)
 ## Current Position
 
 Phase: 1 of 3 (Compass Core)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-02-21 — Completed 01-01-PLAN.md (Xcode project scaffold)
+Last activity: 2026-02-21 — Completed 01-02-PLAN.md (LocationService + PlacesService)
 
-Progress: [█░░░░░░░░░] 11%
+Progress: [██░░░░░░░░] 22%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 4 min
-- Total execution time: 4 min
+- Total plans completed: 2
+- Average duration: 5 min
+- Total execution time: 10 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-compass-core | 1/3 | 4 min | 4 min |
+| 01-compass-core | 2/3 | 10 min | 5 min |
 
 **Recent Trend:**
-- Last 5 plans: 4 min
-- Trend: —
+- Last 5 plans: 4 min, 6 min
+- Trend: Stable
 
 *Updated after each plan completion*
 
@@ -48,6 +48,10 @@ Recent decisions affecting current work:
 - [01-01]: Bundle identifier: com.southyeast.app
 - [01-01]: project.pbxproj hand-authored (swift package init not viable for SwiftUI app targets)
 - [01-01]: PrivacyInfo.xcprivacy included in project.pbxproj Resources build phase at creation time
+- [01-02]: PermissionStatus enum defined in LocationService.swift — keeps related domain types together
+- [01-02]: CLHeading scalar extraction before Task boundary enforced — CLHeading is not Sendable in Swift 6
+- [01-02]: headingAccuracy defaults to -1.0 so app always starts in calibration state on launch and resume
+- [01-02]: MKLocalSearch deferred to Phase 2 (INFR-06) — PlacesService stub serves Phase 1 compass validation needs
 
 ### Pending Todos
 
@@ -59,6 +63,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-02-21T22:04:25Z
-Stopped at: Completed 01-01-PLAN.md. Ready for 01-02-PLAN.md (LocationService).
+Last session: 2026-02-21T22:16:00Z
+Stopped at: Completed 01-02-PLAN.md. Ready for 01-03-PLAN.md (CompassMath + CompassView).
 Resume file: None
