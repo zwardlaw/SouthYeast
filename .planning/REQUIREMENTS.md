@@ -7,11 +7,11 @@
 
 ### Compass
 
-- [ ] **COMP-01**: Pizza slice pointer rotates to point at the currently selected pizza place
-- [ ] **COMP-02**: Smooth spring-based rotation animation with correct 0/360 wrap handling
+- [x] **COMP-01**: Pizza slice pointer rotates to point at the currently selected pizza place
+- [x] **COMP-02**: Smooth spring-based rotation animation with correct 0/360 wrap handling
 - [ ] **COMP-03**: Haptic pulse when compass aligns with target direction
-- [ ] **COMP-04**: Calibration state shown when heading data is unreliable (headingAccuracy < 0)
-- [ ] **COMP-05**: Compass re-targets when user selects a different card in the carousel
+- [x] **COMP-04**: Calibration state shown when heading data is unreliable (headingAccuracy < 0)
+- [x] **COMP-05**: Compass re-targets when user selects a different card in the carousel
 
 ### Discovery
 
@@ -32,11 +32,11 @@
 
 ### Infrastructure
 
-- [ ] **INFR-01**: Location permission state machine handling all states (authorized, denied, restricted, not determined)
-- [ ] **INFR-02**: Privacy manifest (PrivacyInfo.xcprivacy) for App Store compliance
+- [x] **INFR-01**: Location permission state machine handling all states (authorized, denied, restricted, not determined)
+- [x] **INFR-02**: Privacy manifest (PrivacyInfo.xcprivacy) for App Store compliance
 - [ ] **INFR-03**: Error states: no internet, no pizza nearby, location denied
-- [ ] **INFR-04**: App lifecycle: foreground/background transitions, compass resume
-- [ ] **INFR-05**: iOS 17+ deployment target, Swift 6, SwiftUI
+- [x] **INFR-04**: App lifecycle: foreground/background transitions, compass resume
+- [x] **INFR-05**: iOS 17+ deployment target, Swift 6, SwiftUI
 - [ ] **INFR-06**: MKLocalSearch for place data (free, no API key), Google Places as escalation path
 
 ## v2 Requirements
@@ -73,11 +73,11 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| COMP-01 | Phase 1 | Pending |
-| COMP-02 | Phase 1 | Pending |
+| COMP-01 | Phase 1 | Complete |
+| COMP-02 | Phase 1 | Complete |
 | COMP-03 | Phase 2 | Pending |
-| COMP-04 | Phase 1 | Pending |
-| COMP-05 | Phase 1 | Pending |
+| COMP-04 | Phase 1 | Complete |
+| COMP-05 | Phase 1 | Complete |
 | DISC-01 | Phase 2 | Pending |
 | DISC-02 | Phase 2 | Pending |
 | DISC-03 | Phase 2 | Pending |
@@ -89,12 +89,12 @@
 | PERS-03 | Phase 3 | Pending |
 | PERS-04 | Phase 3 | Pending |
 | PERS-05 | Phase 3 | Pending |
-| INFR-01 | Phase 1 | Pending |
-| INFR-02 | Phase 1 | Pending |
+| INFR-01 | Phase 1 | Complete |
+| INFR-02 | Phase 1 | Complete |
 | INFR-03 | Phase 2 | Pending |
-| INFR-04 | Phase 1 | Pending |
-| INFR-05 | Phase 1 | Pending |
-| INFR-06 | Phase 1 | Pending |
+| INFR-04 | Phase 1 | Complete |
+| INFR-05 | Phase 1 | Complete |
+| INFR-06 | Phase 2 | Pending |
 
 **Coverage:**
 - v1 requirements: 22 total
@@ -103,4 +103,4 @@
 
 ---
 *Requirements defined: 2026-02-21*
-*Last updated: 2026-02-21 after roadmap creation*
+*Last updated: 2026-02-21 after Phase 1 completion*

@@ -12,7 +12,7 @@ Take Me to Pizza is built in three phases: first, a compass that points correctl
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Compass Core** - Project scaffold, location permission state machine, and mathematically correct compass rotation
+- [x] **Phase 1: Compass Core** - Project scaffold, location permission state machine, and mathematically correct compass rotation
 - [ ] **Phase 2: Places and Discovery** - Real pizza places via MKLocalSearch, snap-to-card carousel, and directions handoff
 - [ ] **Phase 3: Design and Personality** - Neobrutalist design system, mystery mode, onboarding, and haptic + animation polish
 
@@ -31,9 +31,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Xcode project scaffold with Swift 6, PrivacyInfo.xcprivacy, Info.plist, folder structure
-- [ ] 01-02-PLAN.md — LocationService @Observable wrapper, permission state machine, PlacesService stub
-- [ ] 01-03-PLAN.md — BearingMath with unit tests, AppState accumulated rotation, CompassView with place picker, ContentView routing, lifecycle
+- [x] 01-01-PLAN.md — Xcode project scaffold with Swift 6, PrivacyInfo.xcprivacy, Info.plist, folder structure
+- [x] 01-02-PLAN.md — LocationService @Observable wrapper, permission state machine, PlacesService stub
+- [x] 01-03-PLAN.md — BearingMath with unit tests, AppState accumulated rotation, CompassView with place picker, ContentView routing, lifecycle
 
 ### Phase 2: Places and Discovery
 **Goal**: Users can find, browse, and navigate to real nearby pizza places
@@ -76,6 +76,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Compass Core | 0/3 | Not started | - |
+| 1. Compass Core | 3/3 | Complete ✓ | 2026-02-21 |
 | 2. Places and Discovery | 0/2 | Not started | - |
 | 3. Design and Personality | 0/2 | Not started | - |
