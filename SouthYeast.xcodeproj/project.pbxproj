@@ -11,6 +11,8 @@
 		AA000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000102 /* ContentView.swift */; };
 		AA000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA000103 /* Assets.xcassets */; };
 		AA000004 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = AA000104 /* PrivacyInfo.xcprivacy */; };
+		AA000005 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000106 /* Place.swift */; };
+		AA000006 /* PlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000107 /* PlacesService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		AA000103 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA000104 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		AA000105 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA000106 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		AA000107 /* PlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 		AA000202 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				AA000107 /* PlacesService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -66,6 +71,7 @@
 		AA000203 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AA000106 /* Place.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -173,6 +179,8 @@
 			files = (
 				AA000002 /* ContentView.swift in Sources */,
 				AA000001 /* SouthYeastApp.swift in Sources */,
+				AA000005 /* Place.swift in Sources */,
+				AA000006 /* PlacesService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
