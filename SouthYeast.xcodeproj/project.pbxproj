@@ -16,6 +16,7 @@
 		AA000007 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000108 /* LocationService.swift */; };
 		AA000008 /* BearingMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000109 /* BearingMath.swift */; };
 		AA000009 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000110 /* AppState.swift */; };
+		AA000010B /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000111 /* CompassView.swift */; };
 		AA000030 /* BearingMathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000130 /* BearingMathTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		AA000108 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		AA000109 /* BearingMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearingMath.swift; sourceTree = "<group>"; };
 		AA000110 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		AA000111 /* CompassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
 		AA000120 /* SouthYeastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SouthYeastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA000130 /* BearingMathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearingMathTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +100,7 @@
 		AA000204 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA000111 /* CompassView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				AA000007 /* LocationService.swift in Sources */,
 				AA000008 /* BearingMath.swift in Sources */,
 				AA000009 /* AppState.swift in Sources */,
+				AA000010B /* CompassView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
