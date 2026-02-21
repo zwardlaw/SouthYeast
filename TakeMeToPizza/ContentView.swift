@@ -57,7 +57,7 @@ struct PermissionPrimingView: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
 
-            Text("SouthYeast needs your location to find nearby pizza and point you to it.")
+            Text("Take Me to Pizza needs your location to find nearby pizza and point you to it.")
                 .font(.body)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
@@ -92,7 +92,7 @@ struct PermissionDeniedView: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
 
-            Text("SouthYeast needs location access to find nearby pizza. Enable it in Settings.")
+            Text("Take Me to Pizza needs location access to find nearby pizza. Enable it in Settings.")
                 .font(.body)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)

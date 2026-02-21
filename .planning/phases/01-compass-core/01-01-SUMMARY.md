@@ -8,7 +8,7 @@ tags: [xcode, swift6, swiftui, ios17, privacy-manifest, core-location]
 requires: []
 provides:
   - Xcode project with iOS 17.0 deployment target and Swift 6 strict concurrency
-  - SwiftUI app entry point (SouthYeastApp.swift @main)
+  - SwiftUI app entry point (TakeMeToPizzaApp.swift @main)
   - Placeholder ContentView.swift showing location icon and app name
   - PrivacyInfo.xcprivacy in Copy Bundle Resources with precise location declaration
   - NSLocationWhenInUseUsageDescription in Info.plist
@@ -25,17 +25,17 @@ tech-stack:
 
 key-files:
   created:
-    - SouthYeast.xcodeproj/project.pbxproj
-    - SouthYeast.xcodeproj/xcshareddata/xcschemes/SouthYeast.xcscheme
-    - SouthYeast/SouthYeastApp.swift
-    - SouthYeast/ContentView.swift
-    - SouthYeast/Info.plist
-    - SouthYeast/Resources/PrivacyInfo.xcprivacy
-    - SouthYeast/Resources/Assets.xcassets/Contents.json
+    - TakeMeToPizza.xcodeproj/project.pbxproj
+    - TakeMeToPizza.xcodeproj/xcshareddata/xcschemes/TakeMeToPizza.xcscheme
+    - TakeMeToPizza/TakeMeToPizzaApp.swift
+    - TakeMeToPizza/ContentView.swift
+    - TakeMeToPizza/Info.plist
+    - TakeMeToPizza/Resources/PrivacyInfo.xcprivacy
+    - TakeMeToPizza/Resources/Assets.xcassets/Contents.json
   modified: []
 
 key-decisions:
-  - "Bundle identifier: com.southyeast.app"
+  - "Bundle identifier: com.takemetopizza.app (rebranded from com.southyeast.app)"
   - "PrivacyInfo.xcprivacy added to project.pbxproj at creation time, not post-hoc, to avoid forgetting it"
   - "Group structure matches architecture blueprint: Services/, Models/, Views/, Math/, Resources/"
   - "Xcode project created by hand-writing project.pbxproj (no swift package init — not viable for SwiftUI app)"
@@ -80,19 +80,19 @@ Each task was committed atomically:
 
 ## Files Created/Modified
 
-- `SouthYeast.xcodeproj/project.pbxproj` - Xcode project with iOS 17.0 target, Swift 6, strict concurrency, all source/resource references
-- `SouthYeast.xcodeproj/xcshareddata/xcschemes/SouthYeast.xcscheme` - Shared scheme for xcodebuild CLI use
-- `SouthYeast/SouthYeastApp.swift` - @main App struct, WindowGroup { ContentView() }
-- `SouthYeast/ContentView.swift` - Placeholder showing location.north.fill icon and "SouthYeast" title
-- `SouthYeast/Info.plist` - NSLocationWhenInUseUsageDescription set
-- `SouthYeast/Resources/PrivacyInfo.xcprivacy` - Declares NSPrivacyCollectedDataTypePreciseLocation, not linked, not tracking, app functionality purpose
-- `SouthYeast/Resources/Assets.xcassets/` - AppIcon and AccentColor placeholder slots
+- `TakeMeToPizza.xcodeproj/project.pbxproj` - Xcode project with iOS 17.0 target, Swift 6, strict concurrency, all source/resource references
+- `TakeMeToPizza.xcodeproj/xcshareddata/xcschemes/TakeMeToPizza.xcscheme` - Shared scheme for xcodebuild CLI use
+- `TakeMeToPizza/TakeMeToPizzaApp.swift` - @main App struct, WindowGroup { ContentView() }
+- `TakeMeToPizza/ContentView.swift` - Placeholder showing location.north.fill icon and "TakeMeToPizza" title
+- `TakeMeToPizza/Info.plist` - NSLocationWhenInUseUsageDescription set
+- `TakeMeToPizza/Resources/PrivacyInfo.xcprivacy` - Declares NSPrivacyCollectedDataTypePreciseLocation, not linked, not tracking, app functionality purpose
+- `TakeMeToPizza/Resources/Assets.xcassets/` - AppIcon and AccentColor placeholder slots
 
 ## Decisions Made
 
 - **project.pbxproj hand-authored:** `swift package init` does not produce a SwiftUI app target. Xcode cannot be run headlessly to create a project. Direct authoring of project.pbxproj is the correct approach for CI/automated workflows.
 - **PrivacyInfo included at project creation:** Rather than adding it in a separate step, the PrivacyInfo.xcprivacy was included in project.pbxproj's Resources build phase from the start, ensuring it is never missing during development builds.
-- **Bundle ID `com.southyeast.app`:** Matches expected App Store submission identifier.
+- **Bundle ID `com.takemetopizza.app`:** Matches expected App Store submission identifier.
 - **SWIFT_VERSION = 6.0, SWIFT_STRICT_CONCURRENCY = complete:** Applied to both Debug and Release configurations to catch concurrency issues early.
 
 ## Deviations from Plan
@@ -104,7 +104,7 @@ Each task was committed atomically:
 - **Found during:** Task 1 (build verification)
 - **Issue:** The project.pbxproj referenced PrivacyInfo.xcprivacy in the Resources build phase (correct per plan), but the file did not yet exist on disk. First build failed with `lstat: No such file or directory`.
 - **Fix:** Created PrivacyInfo.xcprivacy with correct content before re-running verification build. This is not a plan deviation — it was the correct order of operations since both tasks were being executed together.
-- **Files modified:** SouthYeast/Resources/PrivacyInfo.xcprivacy
+- **Files modified:** TakeMeToPizza/Resources/PrivacyInfo.xcprivacy
 - **Verification:** Build succeeded after file creation.
 - **Committed in:** 83b6111 (Task 2 commit, which is the correct task for this file)
 

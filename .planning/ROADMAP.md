@@ -1,8 +1,8 @@
-# Roadmap: SouthYeast
+# Roadmap: Take Me to Pizza
 
 ## Overview
 
-SouthYeast is built in three phases: first, a compass that points correctly at pizza with all the infrastructure to support it; second, real places data flowing through a scrollable card carousel; third, the neobrutalist visual identity and personality features that make the app worth shipping. Mechanics are validated before aesthetics are applied — wrong values with beautiful animations are worse than correct values with placeholder styling.
+Take Me to Pizza is built in three phases: first, a compass that points correctly at pizza with all the infrastructure to support it; second, real places data flowing through a scrollable card carousel; third, the neobrutalist visual identity and personality features that make the app worth shipping. Mechanics are validated before aesthetics are applied — wrong values with beautiful animations are worse than correct values with placeholder styling.
 
 ## Phases
 
@@ -54,7 +54,7 @@ Plans:
 - [ ] 02-02: CarouselView — snap-to-card scrollTargetBehavior, card expand, directions handoff, empty/error states, haptic pulse on compass alignment
 
 ### Phase 3: Design and Personality
-**Goal**: The app looks and feels like SouthYeast — bold, physical, and surprising
+**Goal**: The app looks and feels like Take Me to Pizza — bold, physical, and surprising
 **Depends on**: Phase 2
 **Requirements**: PERS-01, PERS-02, PERS-03, PERS-04, PERS-05
 **Success Criteria** (what must be TRUE):

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA000001 /* SouthYeastApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000101 /* SouthYeastApp.swift */; };
+		AA000001 /* TakeMeToPizzaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000101 /* TakeMeToPizzaApp.swift */; };
 		AA000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000102 /* ContentView.swift */; };
 		AA000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA000103 /* Assets.xcassets */; };
 		AA000004 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = AA000104 /* PrivacyInfo.xcprivacy */; };
@@ -21,8 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA000100 /* SouthYeast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SouthYeast.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA000101 /* SouthYeastApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SouthYeastApp.swift; sourceTree = "<group>"; };
+		AA000100 /* TakeMeToPizza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMeToPizza.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA000101 /* TakeMeToPizzaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMeToPizzaApp.swift; sourceTree = "<group>"; };
 		AA000102 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AA000103 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA000104 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
@@ -33,7 +33,7 @@
 		AA000109 /* BearingMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearingMath.swift; sourceTree = "<group>"; };
 		AA000110 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		AA000111 /* CompassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
-		AA000120 /* SouthYeastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SouthYeastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA000120 /* TakeMeToPizzaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TakeMeToPizzaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA000130 /* BearingMathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearingMathTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,16 +58,16 @@
 		AA000200 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA000100 /* SouthYeast.app */,
-				AA000120 /* SouthYeastTests.xctest */,
+				AA000100 /* TakeMeToPizza.app */,
+				AA000120 /* TakeMeToPizzaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AA000201 /* SouthYeast */ = {
+		AA000201 /* TakeMeToPizza */ = {
 			isa = PBXGroup;
 			children = (
-				AA000101 /* SouthYeastApp.swift */,
+				AA000101 /* TakeMeToPizzaApp.swift */,
 				AA000102 /* ContentView.swift */,
 				AA000202 /* Services */,
 				AA000203 /* Models */,
@@ -76,7 +76,7 @@
 				AA000206 /* Resources */,
 				AA000105 /* Info.plist */,
 			);
-			path = SouthYeast;
+			path = TakeMeToPizza;
 			sourceTree = "<group>";
 		};
 		AA000202 /* Services */ = {
@@ -122,19 +122,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		AA000207 /* SouthYeastTests */ = {
+		AA000207 /* TakeMeToPizzaTests */ = {
 			isa = PBXGroup;
 			children = (
 				AA000130 /* BearingMathTests.swift */,
 			);
-			path = SouthYeastTests;
+			path = TakeMeToPizzaTests;
 			sourceTree = "<group>";
 		};
 		AA000300 = {
 			isa = PBXGroup;
 			children = (
-				AA000201 /* SouthYeast */,
-				AA000207 /* SouthYeastTests */,
+				AA000201 /* TakeMeToPizza */,
+				AA000207 /* TakeMeToPizzaTests */,
 				AA000200 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -142,9 +142,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AA000010 /* SouthYeast */ = {
+		AA000010 /* TakeMeToPizza */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA000400 /* Build configuration list for PBXNativeTarget "SouthYeast" */;
+			buildConfigurationList = AA000400 /* Build configuration list for PBXNativeTarget "TakeMeToPizza" */;
 			buildPhases = (
 				AA000011 /* Sources */,
 				AA000020 /* Frameworks */,
@@ -154,14 +154,14 @@
 			);
 			dependencies = (
 			);
-			name = SouthYeast;
-			productName = SouthYeast;
-			productReference = AA000100 /* SouthYeast.app */;
+			name = TakeMeToPizza;
+			productName = TakeMeToPizza;
+			productReference = AA000100 /* TakeMeToPizza.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AA000012 /* SouthYeastTests */ = {
+		AA000012 /* TakeMeToPizzaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA000600 /* Build configuration list for PBXNativeTarget "SouthYeastTests" */;
+			buildConfigurationList = AA000600 /* Build configuration list for PBXNativeTarget "TakeMeToPizzaTests" */;
 			buildPhases = (
 				AA000013 /* Sources (Tests) */,
 				AA000022 /* Frameworks (Tests) */,
@@ -171,9 +171,9 @@
 			dependencies = (
 				AA000014 /* PBXTargetDependency */,
 			);
-			name = SouthYeastTests;
-			productName = SouthYeastTests;
-			productReference = AA000120 /* SouthYeastTests.xctest */;
+			name = TakeMeToPizzaTests;
+			productName = TakeMeToPizzaTests;
+			productReference = AA000120 /* TakeMeToPizzaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -195,7 +195,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AA000500 /* Build configuration list for PBXProject "SouthYeast" */;
+			buildConfigurationList = AA000500 /* Build configuration list for PBXProject "TakeMeToPizza" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -208,8 +208,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AA000010 /* SouthYeast */,
-				AA000012 /* SouthYeastTests */,
+				AA000010 /* TakeMeToPizza */,
+				AA000012 /* TakeMeToPizzaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -232,7 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA000002 /* ContentView.swift in Sources */,
-				AA000001 /* SouthYeastApp.swift in Sources */,
+				AA000001 /* TakeMeToPizzaApp.swift in Sources */,
 				AA000005 /* Place.swift in Sources */,
 				AA000006 /* PlacesService.swift in Sources */,
 				AA000007 /* LocationService.swift in Sources */,
@@ -255,7 +255,7 @@
 /* Begin PBXTargetDependency section */
 		AA000014 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AA000010 /* SouthYeast */;
+			target = AA000010 /* TakeMeToPizza */;
 			targetProxy = AA000015 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -266,7 +266,7 @@
 			containerPortal = AA000000 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = AA000010;
-			remoteInfo = SouthYeast;
+			remoteInfo = TakeMeToPizza;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -281,7 +281,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = SouthYeast/Info.plist;
+				INFOPLIST_FILE = TakeMeToPizza/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
 				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -289,7 +289,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.southyeast.app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.takemetopizza.app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
@@ -363,7 +363,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = SouthYeast/Info.plist;
+				INFOPLIST_FILE = TakeMeToPizza/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
 				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -371,7 +371,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.southyeast.app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.takemetopizza.app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
@@ -554,13 +554,13 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.southyeast.app.tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.takemetopizza.app.tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SouthYeast.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SouthYeast";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TakeMeToPizza.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TakeMeToPizza";
 			};
 			name = Debug;
 		};
@@ -573,20 +573,20 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.southyeast.app.tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.takemetopizza.app.tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SouthYeast.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SouthYeast";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TakeMeToPizza.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TakeMeToPizza";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AA000400 /* Build configuration list for PBXNativeTarget "SouthYeast" */ = {
+		AA000400 /* Build configuration list for PBXNativeTarget "TakeMeToPizza" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA000401 /* Debug */,
@@ -595,7 +595,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA000500 /* Build configuration list for PBXProject "SouthYeast" */ = {
+		AA000500 /* Build configuration list for PBXProject "TakeMeToPizza" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA000501 /* Debug */,
@@ -604,7 +604,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA000600 /* Build configuration list for PBXNativeTarget "SouthYeastTests" */ = {
+		AA000600 /* Build configuration list for PBXNativeTarget "TakeMeToPizzaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA000601 /* Debug (Tests) */,

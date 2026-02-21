@@ -1,13 +1,13 @@
 # Project Research Summary
 
-**Project:** SouthYeast — Neobrutalist iOS Pizza Compass
+**Project:** Take Me to Pizza — Neobrutalist iOS Pizza Compass
 **Domain:** iOS single-purpose location instrument / novelty food-finder app
 **Researched:** 2026-02-21
 **Confidence:** HIGH
 
 ## Executive Summary
 
-SouthYeast is best understood as a novelty instrument app with a restaurant discovery side-effect — not a food-finding utility. The closest analogs are hardware compass gadgets and single-purpose iPhone instrument apps, not Yelp or Google Maps. Research consistently confirms that the app's competitive moat is the quality of the gag (a pizza slice that spins correctly, looks bold, and surprises users with mystery mode), not feature breadth. Every architectural and feature decision should be evaluated against the question "does this serve the joke?" rather than "does this match restaurant-app conventions."
+Take Me to Pizza is best understood as a novelty instrument app with a restaurant discovery side-effect — not a food-finding utility. The closest analogs are hardware compass gadgets and single-purpose iPhone instrument apps, not Yelp or Google Maps. Research consistently confirms that the app's competitive moat is the quality of the gag (a pizza slice that spins correctly, looks bold, and surprises users with mystery mode), not feature breadth. Every architectural and feature decision should be evaluated against the question "does this serve the joke?" rather than "does this match restaurant-app conventions."
 
 The recommended technical approach is zero third-party dependencies using only Apple's native iOS 17 stack: Swift 6, SwiftUI, Core Location, and MapKit. This is not a compromise — it is the right architecture. `CLLocationManager` with `@Observable` wrapping delivers heading and GPS natively without libraries. `MKLocalSearch` delivers pizza places for free with no API key. `MKMapItem.openInMaps()` handles directions handoff in one line. If MKLocalSearch data quality proves insufficient in target markets, a clearly-scoped escalation path to Google Places SDK v10.8.0 (SPM) exists and was fully researched.
 
@@ -30,7 +30,7 @@ The app can ship with **zero third-party dependencies** using only Apple framewo
 
 ### Expected Features
 
-SouthYeast's table stakes are defined by the core mechanic, not restaurant-app conventions. The app must do one thing perfectly: open, find pizza, point at it.
+Take Me to Pizza's table stakes are defined by the core mechanic, not restaurant-app conventions. The app must do one thing perfectly: open, find pizza, point at it.
 
 **Must have (table stakes):**
 - Location permission priming screen — context before the system dialog; users who don't understand the gag deny location
@@ -69,7 +69,7 @@ Service-layer MVVM with `@Observable` services injected via SwiftUI `@Environmen
 4. **CompassView** — reads `AppState.compassAngle`; applies `rotationEffect` + `interpolatingSpring`; no math
 5. **CarouselView** — horizontal `LazyHStack` with `scrollTargetBehavior(.viewAligned)`; reads `PlacesService.places`
 6. **DesignSystem** — static tokens (colors, typography, spacing, border widths) + `ViewModifiers` (`.nbCard()`, `.nbButton()`)
-7. **SouthYeastApp** — bootstraps services, injects via `.environment()`; never a singleton anti-pattern
+7. **Take Me to PizzaApp** — bootstraps services, injects via `.environment()`; never a singleton anti-pattern
 
 Build order is strictly layered: DesignSystem + Place model first (no dependencies) → LocationService + PlacesService → AppState + bearing math → CompassView + CarouselView → ContentView wiring.
 
@@ -119,7 +119,7 @@ Based on the architecture's layer dependency map and the pitfall severity analys
 
 ### Phase 3: Neobrutalist Design System and Personality Features
 
-**Rationale:** With working data and mechanics, implement the visual identity and the features that define SouthYeast's personality. The DesignSystem is Layer 0 in the architecture (no dependencies), so it can be built in parallel with Phase 1-2 or applied here as a full-pass replacement of placeholder styling. Mystery mode is a display-only flag (no new data path) and belongs alongside the design pass. Haptics are low-effort, high-personality.
+**Rationale:** With working data and mechanics, implement the visual identity and the features that define Take Me to Pizza's personality. The DesignSystem is Layer 0 in the architecture (no dependencies), so it can be built in parallel with Phase 1-2 or applied here as a full-pass replacement of placeholder styling. Mystery mode is a display-only flag (no new data path) and belongs alongside the design pass. Haptics are low-effort, high-personality.
 
 **Delivers:** Consistent neobrutalist visual design across all screens, mystery mode toggle, haptic feedback on compass alignment, polished spring micro-animations throughout.
 
@@ -173,7 +173,7 @@ Phases with standard patterns (skip research-phase):
 
 ### Gaps to Address
 
-- **MKLocalSearch result quality:** Confirmed as a recognized limitation (10-25 results, data quality varies by region) but actual quality in target US markets is only verifiable with a live device test. If SouthYeast targets a specific city for launch, validate MKLocalSearch results in that city before committing to MapKit as the permanent backend.
+- **MKLocalSearch result quality:** Confirmed as a recognized limitation (10-25 results, data quality varies by region) but actual quality in target US markets is only verifiable with a live device test. If Take Me to Pizza targets a specific city for launch, validate MKLocalSearch results in that city before committing to MapKit as the permanent backend.
 
 - **Haptic design specifics:** Research confirms `UIImpactFeedbackGenerator` as the right tool and "pulse when aligned" as the right behavior. The exact haptic pattern (intensity, rhythm, alignment threshold in degrees) is a design/feel question that requires on-device tuning, not further research.
 

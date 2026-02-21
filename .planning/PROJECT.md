@@ -1,4 +1,4 @@
-# SouthYeast
+# Take Me to Pizza
 
 ## What This Is
 
@@ -64,4 +64,4 @@ The pizza slice compass always points to the nearest pizza. Open the app, find p
 | Infinite scroll with batch loading | Keeps initial load fast, feels endless | — Pending |
 
 ---
-*Last updated: 2026-02-21 after initialization*
+*Last updated: 2026-02-21 — rebranded from SouthYeast to Take Me to Pizza*

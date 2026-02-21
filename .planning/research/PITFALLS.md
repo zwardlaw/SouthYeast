@@ -1,4 +1,4 @@
-# Domain Pitfalls: SouthYeast
+# Domain Pitfalls: Take Me to Pizza
 
 **Domain:** iOS real-time compass + location services + places API
 **Researched:** 2026-02-21
@@ -125,7 +125,7 @@ Handle all five authorization states explicitly:
 - `.denied`: show permission-denied screen with deep-link button to `UIApplication.openSettingsURLString`
 - `.restricted`: show parental controls message, no settings button (user cannot change it)
 
-Write the permission prompt reason string (`NSLocationWhenInUseUsageDescription`) in plain language explaining the pizza compass — not generic boilerplate. Example: "SouthYeast uses your location to find the nearest pizza and point you to it. Without location, the compass cannot work."
+Write the permission prompt reason string (`NSLocationWhenInUseUsageDescription`) in plain language explaining the pizza compass — not generic boilerplate. Example: "Take Me to Pizza uses your location to find the nearest pizza and point you to it. Without location, the compass cannot work."
 
 Do NOT request `.authorizedAlways` — this app only needs foreground location. Requesting "Always" triggers a more aggressive review and increases rejection rate.
 

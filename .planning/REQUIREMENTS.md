@@ -1,4 +1,4 @@
-# Requirements: SouthYeast
+# Requirements: Take Me to Pizza
 
 **Defined:** 2026-02-21
 **Core Value:** The pizza slice compass always points to the nearest pizza. Open the app, find pizza.

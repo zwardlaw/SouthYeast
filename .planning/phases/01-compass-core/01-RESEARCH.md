@@ -54,8 +54,8 @@ Swift 6 strict concurrency introduces a specific gotcha with `CLLocationManager`
 ### Recommended Project Structure
 
 ```
-SouthYeast/
-├── SouthYeastApp.swift        # @main, bootstraps services, .environment() injection
+TakeMeToPizza/
+├── TakeMeToPizzaApp.swift        # @main, bootstraps services, .environment() injection
 ├── ContentView.swift          # Root view; switches on permissionStatus
 ├── Services/
 │   ├── LocationService.swift  # @Observable @MainActor CLLocationManager wrapper
@@ -339,7 +339,7 @@ struct ContentView: View {
 ```swift
 // Source: ARCHITECTURE.md Pattern 1
 @main
-struct SouthYeastApp: App {
+struct TakeMeToPizzaApp: App {
     @State private var locationService = LocationService()
     @State private var placesService = PlacesService()
     @State private var appState: AppState
@@ -633,7 +633,7 @@ final class BearingMathTests: XCTestCase {
 
 **Info.plist addition required separately:**
 ```
-NSLocationWhenInUseUsageDescription: "SouthYeast uses your location to find the nearest pizza and point you to it. Without location, the compass cannot work."
+NSLocationWhenInUseUsageDescription: "Take Me to Pizza uses your location to find the nearest pizza and point you to it. Without location, the compass cannot work."
 ```
 
 ---
@@ -648,7 +648,7 @@ Step 1: Xcode project scaffold (01-01)
   - PrivacyInfo.xcprivacy added and in target membership
   - NSLocationWhenInUseUsageDescription in Info.plist
   - Group structure: Services/, Models/, Views/, Math/
-  - SouthYeastApp.swift with @State service instances
+  - TakeMeToPizzaApp.swift with @State service instances
 
 Step 2: BearingMath.swift (01-03 prerequisite — pure, no dependencies)
   - bearing(from:to:) -> Double

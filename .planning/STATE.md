@@ -7,6 +7,8 @@ See: .planning/PROJECT.md (updated 2026-02-21)
 **Core value:** The pizza slice compass always points to the nearest pizza. Open the app, find pizza.
 **Current focus:** Phase 1 — Compass Core (awaiting human verification of 01-03)
 
+**App name:** Take Me to Pizza (rebranded from SouthYeast on 2026-02-21)
+
 ## Current Position
 
 Phase: 1 of 3 (Compass Core)
@@ -45,7 +47,7 @@ Recent decisions affecting current work:
 - [Roadmap]: Zero third-party dependencies — use Apple native stack (Swift 6, SwiftUI, Core Location, MapKit)
 - [Roadmap]: MKLocalSearch as primary places backend; Google Places SDK v10.8.0 as escalation path only
 - [Roadmap]: Compass mechanics correctness validated in Phase 1 before any UI polish work begins
-- [01-01]: Bundle identifier: com.southyeast.app
+- [01-01]: Bundle identifier: com.takemetopizza.app (rebranded from com.southyeast.app)
 - [01-01]: project.pbxproj hand-authored (swift package init not viable for SwiftUI app targets)
 - [01-01]: PrivacyInfo.xcprivacy included in project.pbxproj Resources build phase at creation time
 - [01-02]: PermissionStatus enum defined in LocationService.swift — keeps related domain types together
@@ -55,7 +57,7 @@ Recent decisions affecting current work:
 - [01-03]: Accumulated angle delta — compassAngle accumulates shortest-arc deltas, never raw 0-360 values
 - [01-03]: Info.plist requires CFBundle* keys when GENERATE_INFOPLIST_FILE=NO — CFBundleIdentifier must be explicit
 - [01-03]: Single-allocation @State pattern — declare without default, init via State(initialValue:) in App.init()
-- [01-03]: SouthYeastTests BUNDLE_LOADER + TEST_HOST point to app binary for @testable import
+- [01-03]: TakeMeToPizzaTests BUNDLE_LOADER + TEST_HOST point to app binary for @testable import
 
 ### Pending Todos
 

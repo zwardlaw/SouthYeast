@@ -1,6 +1,6 @@
 # Technology Stack
 
-**Project:** SouthYeast — Neobrutalist iOS Pizza Compass
+**Project:** Take Me to Pizza — Neobrutalist iOS Pizza Compass
 **Researched:** 2026-02-21
 **Research mode:** Ecosystem / Prescriptive
 
@@ -220,7 +220,7 @@ ScrollView(.horizontal) {
 **Core neobrutalist design tokens (implement as SwiftUI constants):**
 - Border width: 3–4pt
 - Shadow: Hard offset shadow, no blur, dark color (use `.shadow(color: .black, radius: 0, x: 4, y: 4)`)
-- Colors: High-saturation primaries; for SouthYeast, pizza colors — red, orange, cream/yellow
+- Colors: High-saturation primaries; for Take Me to Pizza, pizza colors — red, orange, cream/yellow
 - Corner radius: 0–4pt (flat or very slightly rounded)
 
 **Confidence: MEDIUM** — Based on neobrutalism design principles from NN/G and design community resources; SwiftUI implementation approach is well-established but specific token values require design iteration.

@@ -1,6 +1,6 @@
 import XCTest
 import CoreLocation
-@testable import SouthYeast
+@testable import TakeMeToPizza
 
 final class BearingMathTests: XCTestCase {
 

@@ -16,8 +16,8 @@ provides:
   - AppState.swift: accumulated compassAngle (delta-based, not raw), isCalibrating, selectedPlace
   - CompassView.swift: spring-animated arrow needle, calibration overlay, PlacePickerRow for COMP-05 verification
   - ContentView.swift: permission routing (4 states), scenePhase lifecycle, onChange heading/selectedPlace wiring
-  - SouthYeastApp.swift: single-allocation @State pattern, .environment() injection for all 3 services
-  - SouthYeastTests target: test scheme, BearingMathTests (5/5 pass)
+  - TakeMeToPizzaApp.swift: single-allocation @State pattern, .environment() injection for all 3 services
+  - TakeMeToPizzaTests target: test scheme, BearingMathTests (5/5 pass)
 
 affects:
   - 02-places-carousel: CompassView PlacePickerRow is replaced by the carousel; AppState.selectedPlace binding is unchanged
@@ -25,7 +25,7 @@ affects:
 
 # Tech tracking
 tech-stack:
-  added: [XCTest (SouthYeastTests target), interpolatingSpring animation]
+  added: [XCTest (TakeMeToPizzaTests target), interpolatingSpring animation]
   patterns:
     - Accumulated angle delta rotation (prevents 0/360 boundary spin)
     - Single-allocation @State pattern via State(initialValue:) in App.init()
@@ -34,22 +34,22 @@ tech-stack:
 
 key-files:
   created:
-    - SouthYeast/Math/BearingMath.swift
-    - SouthYeast/Models/AppState.swift
-    - SouthYeast/Views/CompassView.swift
-    - SouthYeastTests/BearingMathTests.swift
+    - TakeMeToPizza/Math/BearingMath.swift
+    - TakeMeToPizza/Models/AppState.swift
+    - TakeMeToPizza/Views/CompassView.swift
+    - TakeMeToPizzaTests/BearingMathTests.swift
   modified:
-    - SouthYeast/ContentView.swift
-    - SouthYeast/SouthYeastApp.swift
-    - SouthYeast/Info.plist
-    - SouthYeast.xcodeproj/project.pbxproj
-    - SouthYeast.xcodeproj/xcshareddata/xcschemes/SouthYeast.xcscheme
+    - TakeMeToPizza/ContentView.swift
+    - TakeMeToPizza/TakeMeToPizzaApp.swift
+    - TakeMeToPizza/Info.plist
+    - TakeMeToPizza.xcodeproj/project.pbxproj
+    - TakeMeToPizza.xcodeproj/xcshareddata/xcschemes/TakeMeToPizza.xcscheme
 
 key-decisions:
   - "Accumulated angle delta: compassAngle never clamped to 0-360; accumulates shortest-arc deltas to prevent full-circle spin at north boundary"
   - "Single-allocation @State: declare without default, init only via State(initialValue:) in App.init() to avoid double-allocation discard"
   - "Info.plist required CFBundle* keys: GENERATE_INFOPLIST_FILE=NO requires explicit CFBundleIdentifier or tests cannot install on simulator"
-  - "SouthYeastTests target: BUNDLE_LOADER + TEST_HOST point to SouthYeast.app so @testable import works correctly"
+  - "TakeMeToPizzaTests target: BUNDLE_LOADER + TEST_HOST point to TakeMeToPizza.app so @testable import works correctly"
 
 patterns-established:
   - "Accumulated rotation: rawAngle = bearing - heading; delta = normalizeAngleDelta(rawAngle - previousRawAngle); compassAngle += delta"
@@ -79,7 +79,7 @@ completed: 2026-02-21
 - AppState accumulated rotation with shortest-arc delta — prevents full-circle spin at north boundary
 - CompassView with interpolatingSpring(stiffness:170, damping:26) animation and calibration state overlay
 - ContentView permission routing (4 states) + scenePhase lifecycle (active/background)
-- SouthYeastApp single-allocation pattern — no double-init discard of @Observable services
+- TakeMeToPizzaApp single-allocation pattern — no double-init discard of @Observable services
 - Place picker row validates COMP-05 re-targeting at runtime
 
 ## Task Commits
@@ -87,25 +87,25 @@ completed: 2026-02-21
 Each task was committed atomically:
 
 1. **Task 1: BearingMath with unit tests, AppState with accumulated rotation** - `5d2116f` (feat)
-2. **Task 2: CompassView with place picker, ContentView routing, SouthYeastApp wiring, lifecycle** - `77a4564` (feat)
+2. **Task 2: CompassView with place picker, ContentView routing, TakeMeToPizzaApp wiring, lifecycle** - `77a4564` (feat)
 
 ## Files Created/Modified
 
-- `SouthYeast/Math/BearingMath.swift` - Pure bearing(from:to:) and normalizeAngleDelta(_:) functions
-- `SouthYeast/Models/AppState.swift` - Accumulated compassAngle, isCalibrating, updateCompassAngle()
-- `SouthYeast/Views/CompassView.swift` - Spring-animated needle, calibration overlay, PlacePickerRow
-- `SouthYeastTests/BearingMathTests.swift` - 5 XCTest unit tests (all passing)
-- `SouthYeast/ContentView.swift` - Permission routing + scenePhase lifecycle + onChange wiring
-- `SouthYeast/SouthYeastApp.swift` - Single-allocation @State pattern, .environment() injection
-- `SouthYeast/Info.plist` - Added required CFBundle* keys (CFBundleIdentifier was missing)
-- `SouthYeast.xcodeproj/project.pbxproj` - SouthYeastTests target, new file registrations
-- `SouthYeast.xcodeproj/xcshareddata/xcschemes/SouthYeast.xcscheme` - Added test target to scheme
+- `TakeMeToPizza/Math/BearingMath.swift` - Pure bearing(from:to:) and normalizeAngleDelta(_:) functions
+- `TakeMeToPizza/Models/AppState.swift` - Accumulated compassAngle, isCalibrating, updateCompassAngle()
+- `TakeMeToPizza/Views/CompassView.swift` - Spring-animated needle, calibration overlay, PlacePickerRow
+- `TakeMeToPizzaTests/BearingMathTests.swift` - 5 XCTest unit tests (all passing)
+- `TakeMeToPizza/ContentView.swift` - Permission routing + scenePhase lifecycle + onChange wiring
+- `TakeMeToPizza/TakeMeToPizzaApp.swift` - Single-allocation @State pattern, .environment() injection
+- `TakeMeToPizza/Info.plist` - Added required CFBundle* keys (CFBundleIdentifier was missing)
+- `TakeMeToPizza.xcodeproj/project.pbxproj` - TakeMeToPizzaTests target, new file registrations
+- `TakeMeToPizza.xcodeproj/xcshareddata/xcschemes/TakeMeToPizza.xcscheme` - Added test target to scheme
 
 ## Decisions Made
 
 - **Accumulated angle delta**: `compassAngle` accumulates shortest-arc deltas, never set to raw 0-360 values. This is the correct pattern — without it, the needle spins a full circle whenever heading crosses north.
 - **Info.plist CFBundle* keys**: `GENERATE_INFOPLIST_FILE = NO` requires explicit `CFBundleIdentifier = $(PRODUCT_BUNDLE_IDENTIFIER)` and related keys in the Info.plist. Without them, the app built but tests failed to install on simulator ("Missing bundle ID").
-- **SouthYeastTests bundle loader**: Test target configured with `BUNDLE_LOADER = "$(TEST_HOST)"` and `TEST_HOST` pointing to the app binary so `@testable import SouthYeast` works.
+- **TakeMeToPizzaTests bundle loader**: Test target configured with `BUNDLE_LOADER = "$(TEST_HOST)"` and `TEST_HOST` pointing to the app binary so `@testable import TakeMeToPizza` works.
 
 ## Deviations from Plan
 
@@ -115,7 +115,7 @@ Each task was committed atomically:
 - **Found during:** Task 1 (running unit tests)
 - **Issue:** Info.plist only contained usage strings and UIApplicationSceneManifest. With `GENERATE_INFOPLIST_FILE = NO`, Xcode uses this file directly — no CFBundleIdentifier meant the app installed without a bundle ID and tests failed: "Missing bundle ID."
 - **Fix:** Added `CFBundleIdentifier = $(PRODUCT_BUNDLE_IDENTIFIER)`, `CFBundleExecutable`, `CFBundleName`, `CFBundlePackageType`, `CFBundleShortVersionString`, `CFBundleVersion` to Info.plist using build-settings variable substitution
-- **Files modified:** `SouthYeast/Info.plist`
+- **Files modified:** `TakeMeToPizza/Info.plist`
 - **Verification:** Tests install and run successfully; Executed 5 tests, with 0 failures
 - **Committed in:** `5d2116f` (Task 1 commit)
 

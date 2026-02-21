@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct SouthYeastApp: App {
+struct TakeMeToPizzaApp: App {
     // Declared without default values -- initialized only in init() via State(initialValue:).
     // This ensures single allocation of each service (no double-init discard).
     @State private var locationService: LocationService

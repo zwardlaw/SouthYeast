@@ -15,7 +15,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>SouthYeast uses your location to find the nearest pizza and point you to it.</string>
+	<string>Take Me to Pizza uses your location to find the nearest pizza and point you to it.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

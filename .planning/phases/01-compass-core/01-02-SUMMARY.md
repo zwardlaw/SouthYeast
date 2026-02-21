@@ -26,11 +26,11 @@ tech-stack:
 
 key-files:
   created:
-    - SouthYeast/Models/Place.swift
-    - SouthYeast/Services/PlacesService.swift
-    - SouthYeast/Services/LocationService.swift
+    - TakeMeToPizza/Models/Place.swift
+    - TakeMeToPizza/Services/PlacesService.swift
+    - TakeMeToPizza/Services/LocationService.swift
   modified:
-    - SouthYeast.xcodeproj/project.pbxproj
+    - TakeMeToPizza.xcodeproj/project.pbxproj
 
 key-decisions:
   - "PermissionStatus enum defined in LocationService.swift (not a separate file) — keeps related domain types together"
@@ -78,10 +78,10 @@ Each task was committed atomically:
 **Plan metadata:** (docs: complete plan — committed below)
 
 ## Files Created/Modified
-- `SouthYeast/Models/Place.swift` - Identifiable, Equatable value type with id, name, CLLocationCoordinate2D
-- `SouthYeast/Services/PlacesService.swift` - @Observable @MainActor stub with 3 hardcoded NYC pizza places
-- `SouthYeast/Services/LocationService.swift` - @Observable @MainActor CLLocationManager wrapper; PermissionStatus enum; startUpdating/stopUpdating; 5 nonisolated delegate methods
-- `SouthYeast.xcodeproj/project.pbxproj` - PBXFileReference, PBXBuildFile, Sources build phase, and group entries for all 3 new files
+- `TakeMeToPizza/Models/Place.swift` - Identifiable, Equatable value type with id, name, CLLocationCoordinate2D
+- `TakeMeToPizza/Services/PlacesService.swift` - @Observable @MainActor stub with 3 hardcoded NYC pizza places
+- `TakeMeToPizza/Services/LocationService.swift` - @Observable @MainActor CLLocationManager wrapper; PermissionStatus enum; startUpdating/stopUpdating; 5 nonisolated delegate methods
+- `TakeMeToPizza.xcodeproj/project.pbxproj` - PBXFileReference, PBXBuildFile, Sources build phase, and group entries for all 3 new files
 
 ## Decisions Made
 - PermissionStatus enum defined in LocationService.swift alongside the service that uses it — keeps related types together without a separate file

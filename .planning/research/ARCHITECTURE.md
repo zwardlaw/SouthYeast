@@ -1,6 +1,6 @@
 # Architecture Patterns
 
-**Project:** SouthYeast (Pizza Compass iOS App)
+**Project:** Take Me to Pizza (Pizza Compass iOS App)
 **Researched:** 2026-02-21
 **Domain:** iOS location + compass + places discovery
 
@@ -8,7 +8,7 @@
 
 ## Recommended Architecture
 
-SouthYeast has one job: open app, find pizza. This is a single-screen experience with coordinated real-time data streams (device heading + user location + places results). The architecture must make those streams easy to compose and keep the UI reactive without fighting SwiftUI.
+Take Me to Pizza has one job: open app, find pizza. This is a single-screen experience with coordinated real-time data streams (device heading + user location + places results). The architecture must make those streams easy to compose and keep the UI reactive without fighting SwiftUI.
 
 **Pattern:** Service-layer MVVM with `@Observable` services injected via SwiftUI `@Environment`.
 
@@ -17,7 +17,7 @@ No coordinator needed (single screen app). No TCA needed (complexity is in data 
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                       App Entry                             │
-│                 SouthYeastApp.swift                         │
+│                 TakeMeToPizzaApp.swift                         │
 │   Bootstraps services, injects via @Environment            │
 └─────────────┬───────────────────────────────────────────────┘
               │ @Environment injection
@@ -73,7 +73,7 @@ No coordinator needed (single screen app). No TCA needed (complexity is in data 
 | `CompassView` | Renders animated pizza slice. Applies rotationEffect | - | AppState.compassAngle | Business logic, services |
 | `CarouselView` | Horizontal scroll of place cards. Triggers "load more" | Scroll position | AppState.selectedPlace, PlacesService.places | Compass rendering |
 | `DesignSystem` | Tokens: colors, typography, spacing, border widths | Asset catalogs | - | Runtime state |
-| `SouthYeastApp` | Bootstraps services, injects via `.environment()` | Service instances | - | UI layout |
+| `TakeMeToPizzaApp` | Bootstraps services, injects via `.environment()` | Service instances | - | UI layout |
 
 ---
 
@@ -275,7 +275,7 @@ extension Color {
 
 ```swift
 @main
-struct SouthYeastApp: App {
+struct TakeMeToPizzaApp: App {
     @State private var locationService = LocationService()
     @State private var placesService = PlacesService()
     @State private var appState: AppState
@@ -421,7 +421,7 @@ Layer 3 (depends on Layer 2):
 
 Layer 4 (composes Layer 3):
   ContentView (layouts CompassView + CarouselView)
-  SouthYeastApp (bootstraps and injects services)
+  TakeMeToPizzaApp (bootstraps and injects services)
 ```
 
 **Implication for phases:**

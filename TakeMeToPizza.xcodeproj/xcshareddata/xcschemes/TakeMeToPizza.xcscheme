@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA000010"
-               BuildableName = "SouthYeast.app"
-               BlueprintName = "SouthYeast"
-               ReferencedContainer = "container:SouthYeast.xcodeproj">
+               BuildableName = "TakeMeToPizza.app"
+               BlueprintName = "TakeMeToPizza"
+               ReferencedContainer = "container:TakeMeToPizza.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA000012"
-               BuildableName = "SouthYeastTests.xctest"
-               BlueprintName = "SouthYeastTests"
-               ReferencedContainer = "container:SouthYeast.xcodeproj">
+               BuildableName = "TakeMeToPizzaTests.xctest"
+               BlueprintName = "TakeMeToPizzaTests"
+               ReferencedContainer = "container:TakeMeToPizza.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA000012"
-               BuildableName = "SouthYeastTests.xctest"
-               BlueprintName = "SouthYeastTests"
-               ReferencedContainer = "container:SouthYeast.xcodeproj">
+               BuildableName = "TakeMeToPizzaTests.xctest"
+               BlueprintName = "TakeMeToPizzaTests"
+               ReferencedContainer = "container:TakeMeToPizza.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -69,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA000010"
-            BuildableName = "SouthYeast.app"
-            BlueprintName = "SouthYeast"
-            ReferencedContainer = "container:SouthYeast.xcodeproj">
+            BuildableName = "TakeMeToPizza.app"
+            BlueprintName = "TakeMeToPizza"
+            ReferencedContainer = "container:TakeMeToPizza.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -86,9 +86,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA000010"
-            BuildableName = "SouthYeast.app"
-            BlueprintName = "SouthYeast"
-            ReferencedContainer = "container:SouthYeast.xcodeproj">
+            BuildableName = "TakeMeToPizza.app"
+            BlueprintName = "TakeMeToPizza"
+            ReferencedContainer = "container:TakeMeToPizza.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

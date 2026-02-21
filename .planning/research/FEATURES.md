@@ -1,4 +1,4 @@
-# Feature Landscape: SouthYeast
+# Feature Landscape: Take Me to Pizza
 
 **Domain:** Location-based single-purpose food finder / novelty compass iOS app
 **Researched:** 2026-02-21
@@ -7,15 +7,15 @@
 
 ## Framing: What Kind of App Is This?
 
-SouthYeast is not Yelp. It is not Google Maps. It is a novelty instrument app with a restaurant discovery side-effect.
+Take Me to Pizza is not Yelp. It is not Google Maps. It is a novelty instrument app with a restaurant discovery side-effect.
 
-This distinction matters enormously for feature categorization. Table stakes for Yelp (saved lists, reviews, reservations) are anti-features for SouthYeast. The closest analogs are:
+This distinction matters enormously for feature categorization. Table stakes for Yelp (saved lists, reviews, reservations) are anti-features for Take Me to Pizza. The closest analogs are:
 
 - **Pizza Compass** (grandideastudio.com) — hardware device that points to nearest pizza. Proof the concept works and users love the gag.
 - **FoodCompass** (App Store, 2021) — selects food type, points to nearest. Similar core mechanic, less personality.
 - **HapticNav** — compass with haptic corridors. Shows how tactile feedback elevates a simple compass experience.
 
-The table stakes for SouthYeast are the minimum that makes the core joke land, not the minimum to compete with Yelp.
+The table stakes for Take Me to Pizza are the minimum that makes the core joke land, not the minimum to compete with Yelp.
 
 ---
 
@@ -40,7 +40,7 @@ Features users expect. Missing = the app feels broken or untrustworthy.
 
 ## Differentiators
 
-Features that make SouthYeast SouthYeast. Not expected by users, but create delight and define the product's personality.
+Features that make Take Me to Pizza Take Me to Pizza. Not expected by users, but create delight and define the product's personality.
 
 | Feature | Value Proposition | Complexity | Notes |
 |---------|-------------------|------------|-------|
@@ -131,7 +131,7 @@ The core product already described in PROJECT.md is well-scoped. Prioritize in t
 
 Apps in this exact space:
 
-| App | Core Mechanic | What SouthYeast Does Better |
+| App | Core Mechanic | What Take Me to Pizza Does Better |
 |-----|--------------|----------------------------|
 | Pizza Compass (hardware) | Points to pizza, open/closed bar | Software, always-on phone, mystery mode, better data |
 | FoodCompass (App Store) | Food type → nearest | Pizza-only focus, stronger personality, neobrutalist design |
