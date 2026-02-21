@@ -14,6 +14,9 @@
 		AA000005 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000106 /* Place.swift */; };
 		AA000006 /* PlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000107 /* PlacesService.swift */; };
 		AA000007 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000108 /* LocationService.swift */; };
+		AA000008 /* BearingMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000109 /* BearingMath.swift */; };
+		AA000009 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000110 /* AppState.swift */; };
+		AA000030 /* BearingMathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000130 /* BearingMathTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,10 +29,21 @@
 		AA000106 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		AA000107 /* PlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesService.swift; sourceTree = "<group>"; };
 		AA000108 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		AA000109 /* BearingMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearingMath.swift; sourceTree = "<group>"; };
+		AA000110 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		AA000120 /* SouthYeastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SouthYeastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA000130 /* BearingMathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearingMathTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AA000020 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA000022 /* Frameworks (Tests) */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -43,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				AA000100 /* SouthYeast.app */,
+				AA000120 /* SouthYeastTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				AA000106 /* Place.swift */,
+				AA000110 /* AppState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -89,6 +105,7 @@
 		AA000205 /* Math */ = {
 			isa = PBXGroup;
 			children = (
+				AA000109 /* BearingMath.swift */,
 			);
 			path = Math;
 			sourceTree = "<group>";
@@ -102,10 +119,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		AA000207 /* SouthYeastTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA000130 /* BearingMathTests.swift */,
+			);
+			path = SouthYeastTests;
+			sourceTree = "<group>";
+		};
 		AA000300 = {
 			isa = PBXGroup;
 			children = (
 				AA000201 /* SouthYeast */,
+				AA000207 /* SouthYeastTests */,
 				AA000200 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,6 +156,23 @@
 			productReference = AA000100 /* SouthYeast.app */;
 			productType = "com.apple.product-type.application";
 		};
+		AA000012 /* SouthYeastTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA000600 /* Build configuration list for PBXNativeTarget "SouthYeastTests" */;
+			buildPhases = (
+				AA000013 /* Sources (Tests) */,
+				AA000022 /* Frameworks (Tests) */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA000014 /* PBXTargetDependency */,
+			);
+			name = SouthYeastTests;
+			productName = SouthYeastTests;
+			productReference = AA000120 /* SouthYeastTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -142,6 +185,10 @@
 				TargetAttributes = {
 					AA000010 = {
 						CreatedOnToolsVersion = 16.2;
+					};
+					AA000012 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = AA000010;
 					};
 				};
 			};
@@ -159,6 +206,7 @@
 			projectRoot = "";
 			targets = (
 				AA000010 /* SouthYeast */,
+				AA000012 /* SouthYeastTests */,
 			);
 		};
 /* End PBXProject section */
@@ -185,10 +233,38 @@
 				AA000005 /* Place.swift in Sources */,
 				AA000006 /* PlacesService.swift in Sources */,
 				AA000007 /* LocationService.swift in Sources */,
+				AA000008 /* BearingMath.swift in Sources */,
+				AA000009 /* AppState.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA000013 /* Sources (Tests) */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000030 /* BearingMathTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA000014 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA000010 /* SouthYeast */;
+			targetProxy = AA000015 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXContainerItemProxy section */
+		AA000015 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA000010;
+			remoteInfo = SouthYeast;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin XCBuildConfiguration section */
 		AA000401 /* Debug */ = {
@@ -465,6 +541,44 @@
 			};
 			name = Release;
 		};
+		AA000601 /* Debug (Tests) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.southyeast.app.tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SouthYeast.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SouthYeast";
+			};
+			name = Debug;
+		};
+		AA000602 /* Release (Tests) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.southyeast.app.tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SouthYeast.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SouthYeast";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -482,6 +596,15 @@
 			buildConfigurations = (
 				AA000501 /* Debug */,
 				AA000502 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA000600 /* Build configuration list for PBXNativeTarget "SouthYeastTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA000601 /* Debug (Tests) */,
+				AA000602 /* Release (Tests) */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
