@@ -21,24 +21,24 @@ Decimal phases appear between their surrounding integers in numeric order.
 ### Phase 1: Compass Core
 **Goal**: The compass points at real pizza and stays correct as the user moves and rotates
 **Depends on**: Nothing (first phase)
-**Requirements**: INFR-01, INFR-02, INFR-04, INFR-05, INFR-06, COMP-01, COMP-02, COMP-04, COMP-05
+**Requirements**: INFR-01, INFR-02, INFR-04, INFR-05, COMP-01, COMP-02, COMP-04, COMP-05
 **Success Criteria** (what must be TRUE):
   1. App requests location permission with a priming screen before the system dialog appears
   2. Compass needle rotates to track pizza as the user physically turns their phone — needle stays pointed at the target, not at a fixed map direction
   3. Compass displays a calibration state instead of garbage data when heading accuracy is unreliable
-  4. Selecting a different place in the carousel causes the compass to immediately re-target
+  4. Selecting a different place in the place picker causes the compass to immediately re-target
   5. App resumes correct heading on foreground restore after backgrounding
 **Plans**: 3 plans
 
 Plans:
 - [ ] 01-01-PLAN.md — Xcode project scaffold with Swift 6, PrivacyInfo.xcprivacy, Info.plist, folder structure
 - [ ] 01-02-PLAN.md — LocationService @Observable wrapper, permission state machine, PlacesService stub
-- [ ] 01-03-PLAN.md — BearingMath with unit tests, AppState accumulated rotation, CompassView, ContentView routing, lifecycle
+- [ ] 01-03-PLAN.md — BearingMath with unit tests, AppState accumulated rotation, CompassView with place picker, ContentView routing, lifecycle
 
 ### Phase 2: Places and Discovery
 **Goal**: Users can find, browse, and navigate to real nearby pizza places
 **Depends on**: Phase 1
-**Requirements**: DISC-01, DISC-02, DISC-03, DISC-04, DISC-05, DISC-06, INFR-03, COMP-03
+**Requirements**: INFR-06, DISC-01, DISC-02, DISC-03, DISC-04, DISC-05, DISC-06, INFR-03, COMP-03
 **Success Criteria** (what must be TRUE):
   1. A horizontal scrollable carousel shows real nearby pizza places sorted closest-first, with name and distance on each card
   2. Snapping to a card repoints the compass at that place
@@ -50,7 +50,7 @@ Plans:
 **Plans**: TBD
 
 Plans:
-- [ ] 02-01: PlacesService — MKLocalSearch integration, Place value type, batch loading, 50m re-query threshold
+- [ ] 02-01: PlacesService — MKLocalSearch integration (INFR-06), Place value type, batch loading, 50m re-query threshold
 - [ ] 02-02: CarouselView — snap-to-card scrollTargetBehavior, card expand, directions handoff, empty/error states, haptic pulse on compass alignment
 
 ### Phase 3: Design and Personality
