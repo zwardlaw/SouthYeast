@@ -13,6 +13,7 @@
 		AA000004 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = AA000104 /* PrivacyInfo.xcprivacy */; };
 		AA000005 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000106 /* Place.swift */; };
 		AA000006 /* PlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000107 /* PlacesService.swift */; };
+		AA000007 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000108 /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		AA000105 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA000106 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		AA000107 /* PlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesService.swift; sourceTree = "<group>"; };
+		AA000108 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				AA000107 /* PlacesService.swift */,
+				AA000108 /* LocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				AA000001 /* SouthYeastApp.swift in Sources */,
 				AA000005 /* Place.swift in Sources */,
 				AA000006 /* PlacesService.swift in Sources */,
+				AA000007 /* LocationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
