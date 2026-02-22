@@ -5,35 +5,36 @@
 See: .planning/PROJECT.md (updated 2026-02-21)
 
 **Core value:** The pizza slice compass always points to the nearest pizza. Open the app, find pizza.
-**Current focus:** Phase 2 — Places Carousel (Phase 1 complete)
+**Current focus:** Phase 2 — Places Carousel (Plan 1 complete, Plan 2 next)
 
 **App name:** Take Me to Pizza (rebranded from SouthYeast on 2026-02-21)
 
 ## Current Position
 
-Phase: 1 of 3 (Compass Core) — COMPLETE
-Plan: 3 of 3 in current phase — COMPLETE
-Status: Phase complete — ready for Phase 2
-Last activity: 2026-02-21 — Completed 01-03-PLAN.md (human-verify checkpoint APPROVED)
+Phase: 2 of 3 (Places and Discovery) — In progress
+Plan: 1 of 2 in current phase — COMPLETE
+Status: In progress — ready for Plan 02-02 (carousel UI)
+Last activity: 2026-02-21 — Completed 02-01-PLAN.md
 
-Progress: [███░░░░░░░] 33%
+Progress: [████░░░░░░] 44%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 6 min
-- Total execution time: 18 min
+- Total plans completed: 4
+- Average duration: 5.5 min
+- Total execution time: 22 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-compass-core | 3/3 (COMPLETE) | 18 min | 6 min |
+| 02-places-and-discovery | 1/2 | 4 min | 4 min |
 
 **Recent Trend:**
-- Last 3 plans: 4 min, 6 min, 8 min
-- Trend: Stable
+- Last 4 plans: 4 min, 6 min, 8 min, 4 min
+- Trend: Stable, fast
 
 *Updated after each plan completion*
 
@@ -58,6 +59,11 @@ Recent decisions affecting current work:
 - [01-03]: Info.plist requires CFBundle* keys when GENERATE_INFOPLIST_FILE=NO — CFBundleIdentifier must be explicit
 - [01-03]: Single-allocation @State pattern — declare without default, init via State(initialValue:) in App.init()
 - [01-03]: TakeMeToPizzaTests BUNDLE_LOADER + TEST_HOST point to app binary for @testable import
+- [02-01]: Pizza slice distance unit: 1 slice = 8 inches = 0.2032 meters (distanceInPizzaSlices computed property)
+- [02-01]: MKCoordinateRegion uses latitudinalMeters*2/longitudinalMeters*2 for radius — square bounding box slightly larger than circle
+- [02-01]: isAligned uses previousRawAngle normalized to 0-360 (not accumulated compassAngle) for stability
+- [02-01]: wasAligned flag tracks false->true edge for lastAlignmentTime update (prevents repeated haptic triggers)
+- [02-01]: NetworkMonitor pbxproj IDs: PBXFileReference AA000112, PBXBuildFile AA000016
 
 ### Pending Todos
 
@@ -71,5 +77,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: 01-03-PLAN.md complete (human-verify checkpoint APPROVED, SUMMARY.md finalized)
+Stopped at: 02-01-PLAN.md complete (SUMMARY.md finalized)
 Resume file: None
