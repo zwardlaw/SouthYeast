@@ -5,25 +5,25 @@
 See: .planning/PROJECT.md (updated 2026-02-21)
 
 **Core value:** The pizza slice compass always points to the nearest pizza. Open the app, find pizza.
-**Current focus:** Phase 3 — Design and Personality (Phase 2 complete)
+**Current focus:** Phase 3 — Design and Personality (Plan 1 of 2 complete)
 
 **App name:** Take Me to Pizza (rebranded from SouthYeast on 2026-02-21)
 
 ## Current Position
 
-Phase: 2 of 3 (Places and Discovery) — COMPLETE
-Plan: 2 of 2 in current phase — COMPLETE
-Status: Phase complete — ready for Phase 3
-Last activity: 2026-02-21 — Completed 02-02-PLAN.md (human-verify checkpoint APPROVED)
+Phase: 3 of 3 (Design and Personality) — In Progress
+Plan: 1 of 2 in current phase — COMPLETE
+Status: In progress — ready for Plan 02 (full app restyling)
+Last activity: 2026-02-22 — Completed 03-01-PLAN.md
 
-Progress: [██████░░░░] 66%
+Progress: [███████░░░] 75%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 5.2 min
-- Total execution time: 26 min
+- Total plans completed: 6
+- Average duration: 6.2 min
+- Total execution time: 43 min
 
 **By Phase:**
 
@@ -31,10 +31,11 @@ Progress: [██████░░░░] 66%
 |-------|-------|-------|----------|
 | 01-compass-core | 3/3 (COMPLETE) | 18 min | 6 min |
 | 02-places-and-discovery | 2/2 (COMPLETE) | 8 min | 4 min |
+| 03-design-and-personality | 1/2 (in progress) | 17 min | 17 min |
 
 **Recent Trend:**
-- Last 5 plans: 4 min, 6 min, 8 min, 4 min, 4 min
-- Trend: Stable, fast
+- Last 6 plans: 4 min, 6 min, 8 min, 4 min, 4 min, 17 min
+- Trend: 03-01 took longer (design system + font downloads + pbxproj conflict resolution)
 
 *Updated after each plan completion*
 
@@ -68,6 +69,11 @@ Recent decisions affecting current work:
 - [02-02]: openDirections is @MainActor (Swift 6 strict concurrency — UIApplication.shared is main actor isolated)
 - [02-02]: cardWidth = proxy.size.width - 80 (40pt peek each side via GeometryReader)
 - [02-02]: ZStack(alignment: .bottom) in CompassView — compass fills screen, CarouselView overlays at bottom
+- [03-01]: PBXBuildFile IDs AA000026/027 for PizzaSliceNeedle/MotionService (AA000022/023 collided with existing build phase objects)
+- [03-01]: Font PBXFileReference IDs AA000122/123 (AA000120 already used for TakeMeToPizzaTests.xctest)
+- [03-01]: Space Grotesk downloaded as static 400-weight TTF — variable font not available as TTF from public CDN
+- [03-01]: MotionService view-scoped in CompassView, not app-level environment — battery-safe
+- [03-01]: PizzaSliceNeedle uses clockwise: false in addArc — SwiftUI's flipped Y coord system inverts visual direction
 
 ### Pending Todos
 
@@ -77,9 +83,11 @@ None.
 
 - [Phase 1 verify]: Simulator shows calibration state (no real magnetometer). Test on physical device to verify live compass rotation.
 - [Phase 2 risk]: MKLocalSearch result quality is unverified in target markets. Test on real device in target city early in Phase 2. If quality is insufficient, Google Places escalation path is fully researched (SDK v10.8.0, SPM).
+- [03-01 font]: Space Grotesk at 400 weight only (static TTF). If design requires bold/medium weights, need to download additional weights or find variable TTF source.
+- [03-01 tilt]: Device tilt parallax is static on Simulator (CMMotionManager unavailable). Must test on physical device for tilt effect.
 
 ## Session Continuity
 
-Last session: 2026-02-21
-Stopped at: 02-02-PLAN.md complete (human-verify checkpoint APPROVED)
+Last session: 2026-02-22
+Stopped at: 03-01-PLAN.md complete
 Resume file: None
