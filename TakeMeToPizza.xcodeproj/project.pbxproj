@@ -26,7 +26,6 @@
 		AA000021B /* AppStorageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000117 /* AppStorageKey.swift */; };
 		AA000026 /* PizzaSliceNeedle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000118 /* PizzaSliceNeedle.swift */; };
 		AA000027 /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000119 /* MotionService.swift */; };
-		AA000024 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA000122 /* BebasNeue-Regular.ttf */; };
 		AA000025 /* SpaceGrotesk-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA000123 /* SpaceGrotesk-VariableFont_wght.ttf */; };
 		AA000028 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000124 /* OnboardingView.swift */; };
 		1C588C7A377E4EB89E393300 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF8F2168DD4F8FA6307F6D /* SettingsView.swift */; };
@@ -66,7 +65,6 @@
 		AA000117 /* AppStorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKey.swift; sourceTree = "<group>"; };
 		AA000118 /* PizzaSliceNeedle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaSliceNeedle.swift; sourceTree = "<group>"; };
 		AA000119 /* MotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
-		AA000122 /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
 		AA000123 /* SpaceGrotesk-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpaceGrotesk-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		AA000124 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		AECF8F2168DD4F8FA6307F6D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -189,7 +187,6 @@
 		AA000127 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				AA000122 /* BebasNeue-Regular.ttf */,
 				AA000123 /* SpaceGrotesk-VariableFont_wght.ttf */,
 			);
 			path = Fonts;
@@ -286,7 +283,6 @@
 			files = (
 				AA000003 /* Assets.xcassets in Resources */,
 				AA000004 /* PrivacyInfo.xcprivacy in Resources */,
-				AA000024 /* BebasNeue-Regular.ttf in Resources */,
 				AA000025 /* SpaceGrotesk-VariableFont_wght.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

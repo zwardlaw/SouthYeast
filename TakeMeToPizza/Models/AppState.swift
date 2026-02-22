@@ -72,8 +72,11 @@ final class AppState {
         wasAligned = nowAligned
     }
 
+    /// When true, user has dismissed the calibration overlay manually.
+    var calibrationSkipped = false
+
     /// True when heading data is unreliable and calibration UI should be shown.
     var isCalibrating: Bool {
-        locationService.headingAccuracy < 0
+        locationService.headingAccuracy < 0 && !calibrationSkipped
     }
 }

@@ -40,6 +40,17 @@ struct CompassView: View {
                         Text("Move your phone in a figure-eight pattern")
                             .font(.pizzaBody(size: 14))
                             .foregroundStyle(.secondary)
+
+                        Button {
+                            appState.calibrationSkipped = true
+                        } label: {
+                            Text("SKIP")
+                                .font(.pizzaDisplay(size: 14))
+                        }
+                        .buttonStyle(BrutalistPressStyle())
+                        .brutalistButton()
+                        .padding(.horizontal, 60)
+                        .padding(.top, 8)
                     }
                 } else {
                     // Compass assembly: needle + curved place name rotate together.

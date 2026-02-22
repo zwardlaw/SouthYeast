@@ -329,19 +329,34 @@ private struct LoadingSkeleton: View {
 
 @MainActor
 private func openDirections(to place: Place, preferredApp: String) {
-    let lat = place.coordinate.latitude
-    let lng = place.coordinate.longitude
+    let lat = String(place.coordinate.latitude)
+    let lng = String(place.coordinate.longitude)
 
     if preferredApp == "google",
        let googleURL = URL(string: "comgooglemaps://"),
-       UIApplication.shared.canOpenURL(googleURL),
-       let deepLink = URL(string: "comgooglemaps://?saddr=&daddr=\(lat),\(lng)&directionsmode=walking") {
-        UIApplication.shared.open(deepLink)
-        return
+       UIApplication.shared.canOpenURL(googleURL) {
+        var components = URLComponents()
+        components.scheme = "comgooglemaps"
+        components.queryItems = [
+            URLQueryItem(name: "saddr", value: ""),
+            URLQueryItem(name: "daddr", value: "\(lat),\(lng)"),
+            URLQueryItem(name: "directionsmode", value: "walking"),
+        ]
+        if let deepLink = components.url {
+            UIApplication.shared.open(deepLink)
+            return
+        }
     }
 
     // Fallback: Apple Maps with walking directions.
-    if let appleURL = URL(string: "http://maps.apple.com/?daddr=\(lat),\(lng)&dirflg=w") {
+    var components = URLComponents()
+    components.scheme = "https"
+    components.host = "maps.apple.com"
+    components.queryItems = [
+        URLQueryItem(name: "daddr", value: "\(lat),\(lng)"),
+        URLQueryItem(name: "dirflg", value: "w"),
+    ]
+    if let appleURL = components.url {
         UIApplication.shared.open(appleURL)
     }
 }

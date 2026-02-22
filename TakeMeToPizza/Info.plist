@@ -22,14 +22,16 @@
 		<false/>
 	</dict>
 	<key>UILaunchScreen</key>
-	<dict/>
+	<dict>
+		<key>UIColorName</key>
+		<string>PizzaBackground</string>
+	</dict>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>comgooglemaps</string>
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>BebasNeue-Regular.ttf</string>
 		<string>SpaceGrotesk-VariableFont_wght.ttf</string>
 	</array>
 </dict>
