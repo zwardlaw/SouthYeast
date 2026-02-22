@@ -28,6 +28,8 @@
 		AA000027 /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000119 /* MotionService.swift */; };
 		AA000024 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA000122 /* BebasNeue-Regular.ttf */; };
 		AA000025 /* SpaceGrotesk-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA000123 /* SpaceGrotesk-VariableFont_wght.ttf */; };
+		AA000028 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000124 /* OnboardingView.swift */; };
+		AA000029 /* MysteryModeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000125 /* MysteryModeModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		AA000119 /* MotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
 		AA000122 /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
 		AA000123 /* SpaceGrotesk-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpaceGrotesk-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		AA000124 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		AA000125 /* MysteryModeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MysteryModeModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,8 @@
 				AA000111 /* CompassView.swift */,
 				AA000113 /* CarouselView.swift */,
 				AA000118 /* PizzaSliceNeedle.swift */,
+				AA000124 /* OnboardingView.swift */,
+				AA000125 /* MysteryModeModifier.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -305,6 +311,8 @@
 				AA000021B /* AppStorageKey.swift in Sources */,
 				AA000026 /* PizzaSliceNeedle.swift in Sources */,
 				AA000027 /* MotionService.swift in Sources */,
+				AA000028 /* OnboardingView.swift in Sources */,
+				AA000029 /* MysteryModeModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
