@@ -27,5 +27,10 @@
 	<array>
 		<string>comgooglemaps</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>BebasNeue-Regular.ttf</string>
+		<string>SpaceGrotesk-VariableFont_wght.ttf</string>
+	</array>
 </dict>
 </plist>
