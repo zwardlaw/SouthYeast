@@ -12,11 +12,11 @@ See: .planning/PROJECT.md (updated 2026-02-21)
 ## Current Position
 
 Phase: 2 of 3 (Places and Discovery) — In progress
-Plan: 1 of 2 in current phase — COMPLETE
-Status: In progress — ready for Plan 02-02 (carousel UI)
-Last activity: 2026-02-21 — Completed 02-01-PLAN.md
+Plan: 2 of 2 in current phase — Tasks complete, awaiting human-verify checkpoint
+Status: In progress — 02-02 built and committed, checkpoint pending
+Last activity: 2026-02-22 — Completed 02-02 autonomous tasks (checkpoint:human-verify pending)
 
-Progress: [████░░░░░░] 44%
+Progress: [████░░░░░░] 44% (will be 55% after 02-02 checkpoint approved)
 
 ## Performance Metrics
 
@@ -30,7 +30,7 @@ Progress: [████░░░░░░] 44%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-compass-core | 3/3 (COMPLETE) | 18 min | 6 min |
-| 02-places-and-discovery | 1/2 | 4 min | 4 min |
+| 02-places-and-discovery | 1/2 (plan 2 checkpoint pending) | 7 min | ~4 min |
 
 **Recent Trend:**
 - Last 4 plans: 4 min, 6 min, 8 min, 4 min
@@ -64,6 +64,10 @@ Recent decisions affecting current work:
 - [02-01]: isAligned uses previousRawAngle normalized to 0-360 (not accumulated compassAngle) for stability
 - [02-01]: wasAligned flag tracks false->true edge for lastAlignmentTime update (prevents repeated haptic triggers)
 - [02-01]: NetworkMonitor pbxproj IDs: PBXFileReference AA000112, PBXBuildFile AA000016
+- [02-02]: CarouselView pbxproj IDs: PBXFileReference AA000113, PBXBuildFile AA000017
+- [02-02]: openDirections is @MainActor (Swift 6 strict concurrency — UIApplication.shared is main actor isolated)
+- [02-02]: cardWidth = proxy.size.width - 80 (40pt peek each side via GeometryReader)
+- [02-02]: ZStack(alignment: .bottom) in CompassView — compass fills screen, CarouselView overlays at bottom
 
 ### Pending Todos
 
@@ -76,6 +80,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-02-21
-Stopped at: 02-01-PLAN.md complete (SUMMARY.md finalized)
+Last session: 2026-02-22
+Stopped at: 02-02-PLAN.md tasks 1-2 complete, at checkpoint:human-verify (task 3)
 Resume file: None
