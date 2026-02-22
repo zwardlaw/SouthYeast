@@ -11,6 +11,8 @@ import CoreLocation
 ///   tracks phone rotation (points to target, not just geographic direction).
 /// - `normalizeAngleDelta` ensures shortest-arc delta (no 358-degree spins).
 /// - Guard on `headingAccuracy >= 0` suppresses updates when uncalibrated.
+/// - `isAligned` is true when needle is within 5 degrees of target AND the
+///   2-second haptic cooldown has elapsed since last alignment event.
 @Observable
 @MainActor
 final class AppState {
@@ -20,6 +22,23 @@ final class AppState {
     // Provides continuous angle value for SwiftUI spring animation.
     private(set) var compassAngle: Double = 0.0
     private var previousRawAngle: Double = 0.0
+
+    // MARK: - Alignment Detection
+
+    private var lastAlignmentTime: Date = .distantPast
+    private let alignmentCooldown: TimeInterval = 2.0
+    private var wasAligned = false
+
+    /// True when the compass needle is within 5 degrees of pointing at the
+    /// selected place AND the 2-second haptic cooldown has elapsed.
+    /// Used by CompassView as a `.sensoryFeedback` trigger.
+    var isAligned: Bool {
+        let raw = (previousRawAngle.truncatingRemainder(dividingBy: 360) + 360)
+            .truncatingRemainder(dividingBy: 360)
+        return abs(raw) < 5 && Date().timeIntervalSince(lastAlignmentTime) > alignmentCooldown
+    }
+
+    // MARK: - Dependencies
 
     private let locationService: LocationService
     private let placesService: PlacesService
@@ -32,6 +51,7 @@ final class AppState {
 
     /// Call whenever heading or selectedPlace changes.
     /// Computes accumulated compass angle using shortest-arc delta.
+    /// Tracks alignment transitions and resets haptic cooldown when newly aligned.
     func updateCompassAngle() {
         guard let place = selectedPlace,
               let location = locationService.location,
@@ -43,6 +63,13 @@ final class AppState {
         let delta = normalizeAngleDelta(rawAngle - previousRawAngle)
         compassAngle += delta
         previousRawAngle = rawAngle
+
+        // Update haptic cooldown when alignment transitions from false -> true.
+        let nowAligned = isAligned
+        if nowAligned && !wasAligned {
+            lastAlignmentTime = Date()
+        }
+        wasAligned = nowAligned
     }
 
     /// True when heading data is unreliable and calibration UI should be shown.
