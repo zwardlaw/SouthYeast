@@ -13,7 +13,7 @@ Take Me to Pizza is built in three phases: first, a compass that points correctl
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Compass Core** - Project scaffold, location permission state machine, and mathematically correct compass rotation
-- [ ] **Phase 2: Places and Discovery** - Real pizza places via MKLocalSearch, snap-to-card carousel, and directions handoff
+- [x] **Phase 2: Places and Discovery** - Real pizza places via MKLocalSearch, snap-to-card carousel, and directions handoff
 - [ ] **Phase 3: Design and Personality** - Neobrutalist design system, mystery mode, onboarding, and haptic + animation polish
 
 ## Phase Details
@@ -50,8 +50,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — PlacesService MKLocalSearch integration, Place model expansion, NetworkMonitor, AppState alignment detection
-- [ ] 02-02-PLAN.md — CarouselView with snap-to-card, card expand, directions handoff, empty/error states, haptic compass alignment, full wiring
+- [x] 02-01-PLAN.md — PlacesService MKLocalSearch integration, Place model expansion, NetworkMonitor, AppState alignment detection
+- [x] 02-02-PLAN.md — CarouselView with snap-to-card, card expand, directions handoff, empty/error states, haptic compass alignment, full wiring
 
 ### Phase 3: Design and Personality
 **Goal**: The app looks and feels like Take Me to Pizza — bold, physical, and surprising
@@ -77,5 +77,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Compass Core | 3/3 | Complete ✓ | 2026-02-21 |
-| 2. Places and Discovery | 0/2 | Not started | - |
+| 2. Places and Discovery | 2/2 | Complete ✓ | 2026-02-21 |
 | 3. Design and Personality | 0/2 | Not started | - |

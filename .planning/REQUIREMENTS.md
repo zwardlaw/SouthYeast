@@ -9,18 +9,18 @@
 
 - [x] **COMP-01**: Pizza slice pointer rotates to point at the currently selected pizza place
 - [x] **COMP-02**: Smooth spring-based rotation animation with correct 0/360 wrap handling
-- [ ] **COMP-03**: Haptic pulse when compass aligns with target direction
+- [x] **COMP-03**: Haptic pulse when compass aligns with target direction
 - [x] **COMP-04**: Calibration state shown when heading data is unreliable (headingAccuracy < 0)
 - [x] **COMP-05**: Compass re-targets when user selects a different card in the carousel
 
 ### Discovery
 
-- [ ] **DISC-01**: Horizontal scrolling card carousel at bottom of screen, closest place on left
-- [ ] **DISC-02**: Cards show pizza place name, distance, and basic info
-- [ ] **DISC-03**: Tap card to expand showing details (hours, rating, address)
-- [ ] **DISC-04**: Tap for directions opens Google Maps (preferred) with Apple Maps fallback
-- [ ] **DISC-05**: Infinite scroll: loads closest 10, auto-loads 10 more near end of list
-- [ ] **DISC-06**: Distance display updates as user moves
+- [x] **DISC-01**: Horizontal scrolling card carousel at bottom of screen, closest place on left
+- [x] **DISC-02**: Cards show pizza place name, distance, and basic info
+- [x] **DISC-03**: Tap card to expand showing details (hours, rating, address)
+- [x] **DISC-04**: Tap for directions opens Google Maps (preferred) with Apple Maps fallback
+- [x] **DISC-05**: Infinite scroll: loads closest 10, auto-loads 10 more near end of list
+- [x] **DISC-06**: Distance display updates as user moves
 
 ### Personality
 
@@ -34,10 +34,10 @@
 
 - [x] **INFR-01**: Location permission state machine handling all states (authorized, denied, restricted, not determined)
 - [x] **INFR-02**: Privacy manifest (PrivacyInfo.xcprivacy) for App Store compliance
-- [ ] **INFR-03**: Error states: no internet, no pizza nearby, location denied
+- [x] **INFR-03**: Error states: no internet, no pizza nearby, location denied
 - [x] **INFR-04**: App lifecycle: foreground/background transitions, compass resume
 - [x] **INFR-05**: iOS 17+ deployment target, Swift 6, SwiftUI
-- [ ] **INFR-06**: MKLocalSearch for place data (free, no API key), Google Places as escalation path
+- [x] **INFR-06**: MKLocalSearch for place data (free, no API key), Google Places as escalation path
 
 ## v2 Requirements
 
@@ -75,15 +75,15 @@
 |-------------|-------|--------|
 | COMP-01 | Phase 1 | Complete |
 | COMP-02 | Phase 1 | Complete |
-| COMP-03 | Phase 2 | Pending |
+| COMP-03 | Phase 2 | Complete |
 | COMP-04 | Phase 1 | Complete |
 | COMP-05 | Phase 1 | Complete |
-| DISC-01 | Phase 2 | Pending |
-| DISC-02 | Phase 2 | Pending |
-| DISC-03 | Phase 2 | Pending |
-| DISC-04 | Phase 2 | Pending |
-| DISC-05 | Phase 2 | Pending |
-| DISC-06 | Phase 2 | Pending |
+| DISC-01 | Phase 2 | Complete |
+| DISC-02 | Phase 2 | Complete |
+| DISC-03 | Phase 2 | Complete |
+| DISC-04 | Phase 2 | Complete |
+| DISC-05 | Phase 2 | Complete |
+| DISC-06 | Phase 2 | Complete |
 | PERS-01 | Phase 3 | Pending |
 | PERS-02 | Phase 3 | Pending |
 | PERS-03 | Phase 3 | Pending |
@@ -91,10 +91,10 @@
 | PERS-05 | Phase 3 | Pending |
 | INFR-01 | Phase 1 | Complete |
 | INFR-02 | Phase 1 | Complete |
-| INFR-03 | Phase 2 | Pending |
+| INFR-03 | Phase 2 | Complete |
 | INFR-04 | Phase 1 | Complete |
 | INFR-05 | Phase 1 | Complete |
-| INFR-06 | Phase 2 | Pending |
+| INFR-06 | Phase 2 | Complete |
 
 **Coverage:**
 - v1 requirements: 22 total
@@ -103,4 +103,4 @@
 
 ---
 *Requirements defined: 2026-02-21*
-*Last updated: 2026-02-21 after Phase 1 completion*
+*Last updated: 2026-02-21 after Phase 2 completion*
