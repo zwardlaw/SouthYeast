@@ -15,7 +15,9 @@ struct CompassView: View {
                 .ignoresSafeArea()
 
             // Full-screen compass content centered behind the carousel.
-            VStack(spacing: 32) {
+            VStack {
+                Spacer()
+
                 if appState.isCalibrating {
                     // Calibration state -- heading data unreliable
                     VStack(spacing: 16) {
@@ -29,30 +31,35 @@ struct CompassView: View {
                             .foregroundStyle(.secondary)
                     }
                 } else {
-                    // Pizza slice needle -- rotates to point at the nearest pizza place.
-                    // rotation3DEffect on the needle itself creates the tilt parallax.
-                    PizzaSliceNeedle(motionService: motionService, isAligned: appState.isAligned)
-                        .frame(width: 180, height: 180)
-                        .rotationEffect(.degrees(appState.compassAngle))
-                        .animation(
-                            .interpolatingSpring(stiffness: 170, damping: 26),
-                            value: appState.compassAngle
-                        )
-                        .sensoryFeedback(
-                            .impact(flexibility: .rigid, intensity: 0.7),
-                            trigger: appState.isAligned
-                        )
-                        .onAppear { motionService.start() }
-                        .onDisappear { motionService.stop() }
+                    // Compass assembly: needle + curved place name rotate together.
+                    // The name sits on a circular arc at the tip of the needle.
+                    // When facing away from the target, the name appears upside down.
+                    ZStack {
+                        PizzaSliceNeedle(motionService: motionService, isAligned: appState.isAligned)
+                            .frame(width: 140, height: 140)
+
+                        if let place = appState.selectedPlace {
+                            CurvedText(text: place.name, radius: 110, fontSize: 20)
+                        }
+                    }
+                    .rotationEffect(.degrees(appState.compassAngle))
+                    .animation(
+                        .interpolatingSpring(stiffness: 170, damping: 26),
+                        value: appState.compassAngle
+                    )
+                    .sensoryFeedback(
+                        .impact(flexibility: .rigid, intensity: 0.7),
+                        trigger: appState.isAligned
+                    )
+                    .onAppear { motionService.start() }
+                    .onDisappear { motionService.stop() }
                 }
 
-                // Target name -- shown above the carousel.
-                if let place = appState.selectedPlace {
-                    Text(place.name)
-                        .font(.pizzaDisplay(size: 24))
-                }
+                Spacer()
+                // Reserve space for the carousel overlay below.
+                Spacer().frame(height: 160)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .frame(maxWidth: .infinity)
 
             // Carousel overlay pinned to the bottom of the screen.
             CarouselView()

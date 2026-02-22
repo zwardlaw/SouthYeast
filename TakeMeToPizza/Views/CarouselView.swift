@@ -64,10 +64,10 @@ struct CarouselView: View {
 
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 12) {
-                // Mystery toggle card is the leftmost card (index 0).
-                // Swiping left past the first place card reveals it organically.
-                MysteryToggleCard(cardWidth: cardWidth)
-                    .frame(width: cardWidth)
+                // Mystery toggle card is the leftmost card — discovered by swiping right.
+                // Square shape, same height as place cards but narrower.
+                MysteryToggleCard(cardWidth: 100)
+                    .frame(width: 100)
                     .id(mysteryCardID)
 
                 ForEach(placesService.places) { place in
@@ -107,6 +107,13 @@ struct CarouselView: View {
         }
         .scrollTargetBehavior(.viewAligned)
         .scrollPosition(id: $scrollID)
+        .task(id: placesService.places.first?.id) {
+            // Scroll to first place card on initial load (past the mystery card).
+            if scrollID == nil || scrollID == mysteryCardID,
+               let firstPlace = placesService.places.first {
+                scrollID = firstPlace.id
+            }
+        }
         .onChange(of: scrollID) { _, newID in
             guard isUserScrolling, let newID else { return }
             // Skip processing if the mystery toggle card is selected.

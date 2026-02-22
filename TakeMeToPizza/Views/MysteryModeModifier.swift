@@ -44,23 +44,18 @@ struct MysteryToggleCard: View {
     @AppStorage(AppStorageKey.mysteryMode) private var mysteryModeEnabled: Bool = false
 
     var body: some View {
-        VStack(spacing: 8) {
-            Spacer()
-
+        VStack(spacing: 4) {
             Text("🫣")
-                .font(.system(size: 48))
+                .font(.system(size: 36))
 
             if mysteryModeEnabled {
-                Text("MYSTERY ON")
-                    .font(.pizzaBody(size: 12))
-                    .fontWeight(.semibold)
+                Text("ON")
+                    .font(.pizzaBody(size: 10))
+                    .fontWeight(.bold)
                     .foregroundStyle(Color.pizzaOrange)
             }
-
-            Spacer()
         }
-        .frame(maxWidth: .infinity)
-        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .brutalistCard()
         .onTapGesture {
             withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
