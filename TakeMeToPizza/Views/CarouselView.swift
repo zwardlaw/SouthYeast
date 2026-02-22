@@ -54,8 +54,6 @@ struct CarouselView: View {
         }
         .frame(height: expandedID != nil ? 280 : 140)
         .animation(.spring(response: 0.35, dampingFraction: 0.75), value: expandedID)
-        .background(Color.pizzaCard.opacity(0.95), in: RoundedRectangle(cornerRadius: 16))
-        .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.primary, lineWidth: 2))
     }
 
     // MARK: - Carousel

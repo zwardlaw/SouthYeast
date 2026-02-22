@@ -2,8 +2,8 @@ import SwiftUI
 
 // MARK: - Brutalist Card Modifier
 
-/// Applies a neobrutalist card appearance:
-/// solid background, hard offset shadow, thick primary border.
+/// Applies Gumroad-style neobrutalist card appearance:
+/// solid background, single clean border, hard offset shadow.
 struct BrutalistCard: ViewModifier {
     var cornerRadius: CGFloat = 12
 
@@ -13,15 +13,15 @@ struct BrutalistCard: ViewModifier {
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .stroke(Color.primary, lineWidth: 2.5)
+                    .stroke(Color.primary, lineWidth: 1.5)
             )
-            .shadow(color: Color.primary.opacity(0.9), radius: 0, x: 3, y: 3)
+            .shadow(color: Color.black.opacity(0.12), radius: 0, x: 3, y: 3)
     }
 }
 
 // MARK: - Brutalist Button Modifier
 
-/// Full-width red action button with Bebas Neue lettering and hard shadow.
+/// Full-width action button with Bebas Neue lettering and hard offset shadow.
 struct BrutalistButton: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -33,9 +33,9 @@ struct BrutalistButton: ViewModifier {
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.primary, lineWidth: 2)
+                    .stroke(Color.primary, lineWidth: 1.5)
             )
-            .shadow(color: Color.primary.opacity(0.9), radius: 0, x: 3, y: 3)
+            .shadow(color: Color.black.opacity(0.12), radius: 0, x: 3, y: 3)
     }
 }
 

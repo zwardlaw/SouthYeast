@@ -2,43 +2,34 @@ import SwiftUI
 
 // MARK: - PizzaSliceShape
 
-/// A pizza slice sector pointing upward (tip at center, crust arc at top).
-/// Tip angle = -90 degrees (12 o'clock in SwiftUI's coord system where 0 = 3 o'clock).
+/// A pizza slice sector with the pointy tip at top (12 o'clock) and crust arc at bottom.
+/// The tip points TOWARD the target when used as a compass needle.
 /// Total arc width = 36 degrees (18 half-angle on each side).
 struct PizzaSliceShape: Shape {
     func path(in rect: CGRect) -> Path {
         let center = CGPoint(x: rect.midX, y: rect.midY)
         let radius = min(rect.width, rect.height) * 0.45
 
-        // Tip at 12 o'clock = -90 degrees; half-angle = 18 degrees.
-        let tipAngleDeg: Double = -90
+        // Crust at 6 o'clock (+90 degrees) so the tip (at center) points UP.
+        let crustAngleDeg: Double = 90
         let halfAngleDeg: Double = 18
 
-        // Left and right crust edge angles in degrees.
-        let leftAngleDeg  = tipAngleDeg - halfAngleDeg   // -108
-        let rightAngleDeg = tipAngleDeg + halfAngleDeg   //  -72
+        let startAngleDeg = crustAngleDeg - halfAngleDeg  // 72
+        let endAngleDeg   = crustAngleDeg + halfAngleDeg  // 108
 
-        // Convert to radians for CGPoint arithmetic.
-        let leftRad  = leftAngleDeg  * .pi / 180
-        let rightRad = rightAngleDeg * .pi / 180
-
-        // Left crust arc edge point (the arc end point is computed by addArc internally).
-        let leftEdge = CGPoint(x: center.x + radius * cos(leftRad),
-                               y: center.y + radius * sin(leftRad))
-        // rightEdge is implicit in addArc endAngle; computed only for geometry reference.
-        _ = CGPoint(x: center.x + radius * cos(rightRad),
-                    y: center.y + radius * sin(rightRad))
+        let startRad = startAngleDeg * .pi / 180
+        let startEdge = CGPoint(x: center.x + radius * CGFloat(cos(startRad)),
+                                y: center.y + radius * CGFloat(sin(startRad)))
 
         var path = Path()
         path.move(to: center)
-        path.addLine(to: leftEdge)
-        // Arc from left to right edge going clockwise visually (counter-clockwise in
-        // SwiftUI's flipped Y coordinate system -- so clockwise: false).
+        path.addLine(to: startEdge)
+        // Arc from start to end — clockwise: false in SwiftUI's flipped Y = clockwise on screen.
         path.addArc(
             center: center,
             radius: radius,
-            startAngle: .degrees(leftAngleDeg),
-            endAngle: .degrees(rightAngleDeg),
+            startAngle: .degrees(startAngleDeg),
+            endAngle: .degrees(endAngleDeg),
             clockwise: false
         )
         path.addLine(to: center)
@@ -129,10 +120,11 @@ private struct PepperoniOverlay: View {
             let r  = min(geo.size.width, geo.size.height) * 0.45
 
             // Offset positions relative to slice center, placed within the slice area.
+            // Crust is at bottom (+y), tip is at center, so pepperoni goes below center.
             let spots: [(CGFloat, CGFloat, CGFloat)] = [
-                (cx,        cy - r * 0.55, 7),  // top center, near crust
-                (cx - r * 0.18, cy - r * 0.3, 6),  // left of center
-                (cx + r * 0.18, cy - r * 0.3, 6),  // right of center
+                (cx,              cy + r * 0.55, 7),  // bottom center, near crust
+                (cx - r * 0.18,  cy + r * 0.3,  6),  // left of center
+                (cx + r * 0.18,  cy + r * 0.3,  6),  // right of center
             ]
 
             ZStack {
