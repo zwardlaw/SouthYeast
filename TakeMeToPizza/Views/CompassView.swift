@@ -7,7 +7,15 @@ struct CompassView: View {
     /// MotionService is view-scoped (not app-level environment) -- it only runs
     /// when CompassView is visible. Battery-safe: start/stop with appearance.
     @AppStorage(AppStorageKey.mysteryMode) private var mysteryModeEnabled: Bool = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var motionService = MotionService()
+
+    private var compassAccessibilityLabel: String {
+        guard let place = appState.selectedPlace else { return "Pizza compass" }
+        let name = mysteryModeEnabled ? "a mystery pizza place" : place.name
+        let aligned = appState.isAligned ? "You are facing it." : "Turn to follow the needle."
+        return "Compass pointing to \(name), \(place.distanceDisplayString). \(aligned)"
+    }
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -43,14 +51,15 @@ struct CompassView: View {
                             CurvedText(
                                 text: mysteryModeEnabled ? "PIZZA" : place.name.uppercased(),
                                 radius: 110,
-                                fontSize: 20,
-                                
+                                fontSize: 20
                             )
                         }
                     }
                     .rotationEffect(.degrees(appState.compassAngle))
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel(compassAccessibilityLabel)
                     .animation(
-                        .interpolatingSpring(stiffness: 170, damping: 26),
+                        reduceMotion ? .none : .interpolatingSpring(stiffness: 170, damping: 26),
                         value: appState.compassAngle
                     )
                     .sensoryFeedback(

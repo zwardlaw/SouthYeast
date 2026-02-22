@@ -19,6 +19,7 @@ struct CarouselView: View {
     // Toggled to kick off the spin animation on MysteryToggleCard.
     @State private var mysterySpinTrigger = false
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @AppStorage(AppStorageKey.mysteryMode) private var mysteryModeEnabled: Bool = false
 
     // Fixed ID for the mystery toggle card -- never collides with place UUIDs.
@@ -45,7 +46,14 @@ struct CarouselView: View {
                     StateCard(
                         symbol: "exclamationmark.triangle",
                         title: "Something went wrong",
-                        subtitle: "Pull down to try again"
+                        subtitle: "Tap to try again",
+                        retryAction: {
+                            if let location = locationService.location {
+                                Task {
+                                    await placesService.fetchNearby(userLocation: location)
+                                }
+                            }
+                        }
                     )
                 } else if placesService.isLoading && placesService.places.isEmpty {
                     LoadingSkeleton(cardWidth: cardWidth)
@@ -55,7 +63,7 @@ struct CarouselView: View {
             }
         }
         .frame(height: expandedID != nil ? 280 : 140)
-        .animation(.spring(response: 0.35, dampingFraction: 0.75), value: expandedID)
+        .animation(reduceMotion ? .none : .spring(response: 0.35, dampingFraction: 0.75), value: expandedID)
     }
 
     // MARK: - Carousel
@@ -214,6 +222,7 @@ struct CardView: View {
                     }
                     .frame(maxWidth: .infinity)
                 }
+                .buttonStyle(BrutalistPressStyle())
                 .brutalistButton()
                 .padding(.top, 4)
             }
@@ -221,6 +230,11 @@ struct CardView: View {
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
         .brutalistCard()
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(mysteryModeEnabled ? "Mystery pizza place" : place.name)
+        .accessibilityValue(place.distanceDisplayString)
+        .accessibilityHint(isExpanded ? "Tap to collapse" : "Tap to expand details")
+        .accessibilityAddTraits(.isButton)
         .onTapGesture {
             onTap()
         }
@@ -248,6 +262,7 @@ private struct StateCard: View {
     let symbol: String
     let title: String
     let subtitle: String
+    var retryAction: (() -> Void)? = nil
 
     var body: some View {
         VStack(spacing: 8) {
@@ -260,14 +275,30 @@ private struct StateCard: View {
                 .font(.pizzaBody(size: 13))
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
+
+            if let retryAction {
+                Button {
+                    retryAction()
+                } label: {
+                    Text("TRY AGAIN")
+                        .font(.pizzaDisplay(size: 14))
+                }
+                .buttonStyle(BrutalistPressStyle())
+                .brutalistButton()
+                .padding(.horizontal, 40)
+                .padding(.top, 4)
+            }
         }
         .frame(maxWidth: .infinity)
         .padding()
+        .accessibilityElement(children: .combine)
     }
 }
 
 private struct LoadingSkeleton: View {
     let cardWidth: CGFloat
+
+    @State private var shimmer = false
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -279,10 +310,16 @@ private struct LoadingSkeleton: View {
                             RoundedRectangle(cornerRadius: 12)
                                 .stroke(Color.primary.opacity(0.3), lineWidth: 1.5)
                         )
+                        .opacity(shimmer ? 0.4 : 1.0)
                         .frame(width: cardWidth, height: 80)
                 }
             }
             .padding(.horizontal, 20)
+        }
+        .onAppear {
+            withAnimation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true)) {
+                shimmer = true
+            }
         }
     }
 }

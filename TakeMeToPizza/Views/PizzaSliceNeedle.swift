@@ -65,7 +65,9 @@ struct CurvedText: View {
     }
 
     private func characterAngle(at index: Int) -> Angle {
-        let spacing: Double = 7.5 // degrees between character centers
+        let maxArc: Double = 160 // cap total arc to prevent overlap
+        let idealSpacing: Double = 7.5
+        let spacing = min(idealSpacing, maxArc / Double(max(text.count - 1, 1)))
         let totalWidth = spacing * Double(text.count - 1)
         let startAngle = -totalWidth / 2
         return .degrees(startAngle + Double(index) * spacing)

@@ -121,6 +121,7 @@ struct PermissionPrimingView: View {
                     Text("LET'S FIND PIZZA")
                         .font(.pizzaDisplay(size: 18))
                 }
+                .buttonStyle(BrutalistPressStyle())
                 .brutalistButton()
                 .padding(.horizontal, 32)
                 .padding(.bottom, 48)
@@ -164,6 +165,7 @@ struct PermissionDeniedView: View {
                     Text("OPEN SETTINGS")
                         .font(.pizzaDisplay(size: 18))
                 }
+                .buttonStyle(BrutalistPressStyle())
                 .brutalistButton()
                 .padding(.horizontal, 32)
                 .padding(.bottom, 48)

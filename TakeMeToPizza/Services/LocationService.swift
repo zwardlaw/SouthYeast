@@ -138,7 +138,7 @@ extension LocationService: CLLocationManagerDelegate {
         _ manager: CLLocationManager,
         didFailWithError error: Error
     ) {
-        // Log and continue — location is optional in the app's UX.
-        print("[LocationService] didFailWithError: \(error.localizedDescription)")
+        // Ignored — location errors are non-fatal. The UI shows appropriate
+        // empty/error states via PlacesService and NetworkMonitor.
     }
 }

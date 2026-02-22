@@ -8,6 +8,7 @@ import SwiftUI
 struct OnboardingView: View {
     let onComplete: () -> Void
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var sliceScale: CGFloat = 0.5
 
     var body: some View {
@@ -22,7 +23,7 @@ struct OnboardingView: View {
                     .frame(width: 160, height: 160)
                     .scaleEffect(sliceScale)
                     .animation(
-                        .spring(response: 0.6, dampingFraction: 0.65),
+                        reduceMotion ? .none : .spring(response: 0.6, dampingFraction: 0.65),
                         value: sliceScale
                     )
                     .onAppear { sliceScale = 1.0 }
@@ -45,6 +46,7 @@ struct OnboardingView: View {
                     Text("LET'S GO")
                         .font(.pizzaDisplay(size: 20))
                 }
+                .buttonStyle(BrutalistPressStyle())
                 .brutalistButton()
                 .padding(.horizontal, 32)
                 .padding(.bottom, 48)
