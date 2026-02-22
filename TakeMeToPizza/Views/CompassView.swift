@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CompassView: View {
     @Environment(AppState.self) private var appState
+    @Environment(LocationService.self) private var locationService
     @Environment(\.scenePhase) private var scenePhase
 
     /// MotionService is view-scoped (not app-level environment) -- it only runs
@@ -9,6 +10,7 @@ struct CompassView: View {
     @AppStorage(AppStorageKey.mysteryMode) private var mysteryModeEnabled: Bool = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var motionService = MotionService()
+    @State private var showSettings = false
 
     private var compassAccessibilityLabel: String {
         guard let place = appState.selectedPlace else { return "Pizza compass" }
@@ -76,10 +78,41 @@ struct CompassView: View {
             }
             .frame(maxWidth: .infinity)
 
+            // GPS accuracy warning — shown when horizontal error exceeds 100m.
+            if let accuracy = locationService.location?.horizontalAccuracy,
+               accuracy > 100 {
+                Text("GPS signal weak — compass may be inaccurate")
+                    .font(.pizzaBody(size: 12))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
+                    .background(Color.pizzaRed.opacity(0.9))
+                    .clipShape(Capsule())
+                    .padding(.bottom, 160)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    .accessibilityLabel("GPS signal is weak, compass may be inaccurate")
+            }
+
             // Carousel overlay pinned to the bottom of the screen.
             CarouselView()
                 .padding(.horizontal, 0)
                 .padding(.bottom, 16)
+        }
+        .overlay(alignment: .topTrailing) {
+            Button {
+                showSettings = true
+            } label: {
+                Image(systemName: "gearshape.fill")
+                    .font(.system(size: 20))
+                    .foregroundStyle(Color.primary)
+                    .padding(12)
+            }
+            .accessibilityLabel("Settings")
+            .padding(.top, 8)
+            .padding(.trailing, 8)
+        }
+        .sheet(isPresented: $showSettings) {
+            SettingsView()
         }
         .ignoresSafeArea(edges: .bottom)
         .onChange(of: scenePhase) { _, newPhase in

@@ -80,6 +80,12 @@ struct CarouselView: View {
                     .frame(width: 100)
                     .id(mysteryCardID)
 
+                let loadMoreThresholdID: UUID? = {
+                    let p = placesService.places
+                    guard p.count >= 3 else { return nil }
+                    return p[p.count - 3].id
+                }()
+
                 ForEach(placesService.places) { place in
                     CardView(
                         place: place,
@@ -98,15 +104,10 @@ struct CarouselView: View {
                     .frame(width: cardWidth)
                     .id(place.id)
                     .onAppear {
-                        // Load more when scrolling near the last 3 places.
-                        let places = placesService.places
-                        guard places.count >= 3 else { return }
-                        let threshold = places[places.count - 3].id
-                        if place.id == threshold {
-                            if let location = locationService.location {
-                                Task {
-                                    await placesService.loadMore(userLocation: location)
-                                }
+                        if place.id == loadMoreThresholdID,
+                           let location = locationService.location {
+                            Task {
+                                await placesService.loadMore(userLocation: location)
                             }
                         }
                     }

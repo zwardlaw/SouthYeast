@@ -4,14 +4,15 @@ extension Font {
     // MARK: - Pizza Typography
 
     /// Impact -- bold display face for headings, place names, distances.
+    /// Scales with Dynamic Type relative to the `title` text style.
     static func pizzaDisplay(size: CGFloat) -> Font {
-        Font.custom("Impact", size: size)
+        Font.custom("Impact", size: size, relativeTo: .title)
     }
 
     /// Space Grotesk -- clean geometric sans for body copy, labels, captions.
-    /// PostScript name for the variable font at regular weight.
+    /// Scales with Dynamic Type relative to the `body` text style.
     static func pizzaBody(size: CGFloat) -> Font {
-        Font.custom("SpaceGrotesk-Regular", size: size)
+        Font.custom("SpaceGrotesk-Regular", size: size, relativeTo: .body)
     }
 
     // MARK: - Convenience sizes

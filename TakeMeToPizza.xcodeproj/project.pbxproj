@@ -29,6 +29,7 @@
 		AA000024 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA000122 /* BebasNeue-Regular.ttf */; };
 		AA000025 /* SpaceGrotesk-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA000123 /* SpaceGrotesk-VariableFont_wght.ttf */; };
 		AA000028 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000124 /* OnboardingView.swift */; };
+		1C588C7A377E4EB89E393300 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF8F2168DD4F8FA6307F6D /* SettingsView.swift */; };
 		AA000029 /* MysteryModeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000125 /* MysteryModeModifier.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		AA000122 /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
 		AA000123 /* SpaceGrotesk-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpaceGrotesk-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		AA000124 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		AECF8F2168DD4F8FA6307F6D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AA000125 /* MysteryModeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MysteryModeModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +143,7 @@
 				AA000113 /* CarouselView.swift */,
 				AA000118 /* PizzaSliceNeedle.swift */,
 				AA000124 /* OnboardingView.swift */,
+				AECF8F2168DD4F8FA6307F6D /* SettingsView.swift */,
 				AA000125 /* MysteryModeModifier.swift */,
 			);
 			path = Views;
@@ -312,6 +315,7 @@
 				AA000026 /* PizzaSliceNeedle.swift in Sources */,
 				AA000027 /* MotionService.swift in Sources */,
 				AA000028 /* OnboardingView.swift in Sources */,
+				1C588C7A377E4EB89E393300 /* SettingsView.swift in Sources */,
 				AA000029 /* MysteryModeModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
