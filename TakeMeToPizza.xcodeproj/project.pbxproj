@@ -20,6 +20,14 @@
 		AA000016 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000112 /* NetworkMonitor.swift */; };
 		AA000017 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000113 /* CarouselView.swift */; };
 		AA000030 /* BearingMathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000130 /* BearingMathTests.swift */; };
+		AA000018 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000114 /* Colors.swift */; };
+		AA000019 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000115 /* Typography.swift */; };
+		AA000020B /* BrutalistModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000116 /* BrutalistModifiers.swift */; };
+		AA000021B /* AppStorageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000117 /* AppStorageKey.swift */; };
+		AA000026 /* PizzaSliceNeedle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000118 /* PizzaSliceNeedle.swift */; };
+		AA000027 /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000119 /* MotionService.swift */; };
+		AA000024 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA000122 /* BebasNeue-Regular.ttf */; };
+		AA000025 /* SpaceGrotesk-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA000123 /* SpaceGrotesk-VariableFont_wght.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +57,14 @@
 		AA000113 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		AA000120 /* TakeMeToPizzaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TakeMeToPizzaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA000130 /* BearingMathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearingMathTests.swift; sourceTree = "<group>"; };
+		AA000114 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		AA000115 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
+		AA000116 /* BrutalistModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrutalistModifiers.swift; sourceTree = "<group>"; };
+		AA000117 /* AppStorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKey.swift; sourceTree = "<group>"; };
+		AA000118 /* PizzaSliceNeedle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaSliceNeedle.swift; sourceTree = "<group>"; };
+		AA000119 /* MotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
+		AA000122 /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
+		AA000123 /* SpaceGrotesk-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpaceGrotesk-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +99,7 @@
 			children = (
 				AA000101 /* TakeMeToPizzaApp.swift */,
 				AA000102 /* ContentView.swift */,
+				AA000126 /* DesignSystem */,
 				AA000202 /* Services */,
 				AA000203 /* Models */,
 				AA000204 /* Views */,
@@ -99,6 +116,7 @@
 				AA000107 /* PlacesService.swift */,
 				AA000108 /* LocationService.swift */,
 				AA000112 /* NetworkMonitor.swift */,
+				AA000119 /* MotionService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -117,6 +135,7 @@
 			children = (
 				AA000111 /* CompassView.swift */,
 				AA000113 /* CarouselView.swift */,
+				AA000118 /* PizzaSliceNeedle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -134,6 +153,7 @@
 			children = (
 				AA000103 /* Assets.xcassets */,
 				AA000104 /* PrivacyInfo.xcprivacy */,
+				AA000127 /* Fonts */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -144,6 +164,26 @@
 				AA000130 /* BearingMathTests.swift */,
 			);
 			path = TakeMeToPizzaTests;
+			sourceTree = "<group>";
+		};
+		AA000126 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				AA000114 /* Colors.swift */,
+				AA000115 /* Typography.swift */,
+				AA000116 /* BrutalistModifiers.swift */,
+				AA000117 /* AppStorageKey.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		AA000127 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AA000122 /* BebasNeue-Regular.ttf */,
+				AA000123 /* SpaceGrotesk-VariableFont_wght.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		AA000300 = {
@@ -237,6 +277,8 @@
 			files = (
 				AA000003 /* Assets.xcassets in Resources */,
 				AA000004 /* PrivacyInfo.xcprivacy in Resources */,
+				AA000024 /* BebasNeue-Regular.ttf in Resources */,
+				AA000025 /* SpaceGrotesk-VariableFont_wght.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +299,12 @@
 				AA000010B /* CompassView.swift in Sources */,
 				AA000016 /* NetworkMonitor.swift in Sources */,
 				AA000017 /* CarouselView.swift in Sources */,
+				AA000018 /* Colors.swift in Sources */,
+				AA000019 /* Typography.swift in Sources */,
+				AA000020B /* BrutalistModifiers.swift in Sources */,
+				AA000021B /* AppStorageKey.swift in Sources */,
+				AA000026 /* PizzaSliceNeedle.swift in Sources */,
+				AA000027 /* MotionService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

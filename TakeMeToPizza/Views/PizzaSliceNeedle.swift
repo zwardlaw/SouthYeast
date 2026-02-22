@@ -22,11 +22,12 @@ struct PizzaSliceShape: Shape {
         let leftRad  = leftAngleDeg  * .pi / 180
         let rightRad = rightAngleDeg * .pi / 180
 
-        // Points on the crust arc edge.
-        let leftEdge  = CGPoint(x: center.x + radius * cos(leftRad),
-                                y: center.y + radius * sin(leftRad))
-        let rightEdge = CGPoint(x: center.x + radius * cos(rightRad),
-                                y: center.y + radius * sin(rightRad))
+        // Left crust arc edge point (the arc end point is computed by addArc internally).
+        let leftEdge = CGPoint(x: center.x + radius * cos(leftRad),
+                               y: center.y + radius * sin(leftRad))
+        // rightEdge is implicit in addArc endAngle; computed only for geometry reference.
+        _ = CGPoint(x: center.x + radius * cos(rightRad),
+                    y: center.y + radius * sin(rightRad))
 
         var path = Path()
         path.move(to: center)
