@@ -63,11 +63,11 @@ Plans:
   3. Mystery mode hides all restaurant names throughout the app when activated via the leftmost card
   4. First-time users see an onboarding screen that explains the compass concept and mystery mode before they see the main UI
   5. Location permission is preceded by a priming screen that explains why the app needs location access
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: DesignSystem — color tokens, typography, spacing, border/shadow ViewModifiers (.nbCard, .nbButton), pizza slice Shape
-- [ ] 03-02: Personality features — mystery mode toggle, onboarding flow, location priming screen, spring micro-animations throughout
+- [ ] 03-01-PLAN.md — Design system tokens (colors, typography, brutalist modifiers), custom fonts, pizza slice needle with tilt parallax and alignment glow, MotionService, CompassView restyle
+- [ ] 03-02-PLAN.md — Apply design to all views (carousel, permission screens), mystery mode toggle + redaction, onboarding flow, full visual checkpoint
 
 ## Progress
 
