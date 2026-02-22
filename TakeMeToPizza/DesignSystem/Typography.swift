@@ -3,9 +3,9 @@ import SwiftUI
 extension Font {
     // MARK: - Pizza Typography
 
-    /// Bebas Neue -- bold display face for headings, place names, distances.
+    /// Impact -- bold display face for headings, place names, distances.
     static func pizzaDisplay(size: CGFloat) -> Font {
-        Font.custom("BebasNeue-Regular", size: size)
+        Font.custom("Impact", size: size)
     }
 
     /// Space Grotesk -- clean geometric sans for body copy, labels, captions.

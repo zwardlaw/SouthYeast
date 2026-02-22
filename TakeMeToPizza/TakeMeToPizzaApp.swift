@@ -29,3 +29,13 @@ struct TakeMeToPizzaApp: App {
         }
     }
 }
+
+#Preview {
+    let location = LocationService()
+    let places = PlacesService()
+    let state = AppState(locationService: location, placesService: places)
+    ContentView()
+        .environment(location)
+        .environment(places)
+        .environment(state)
+}

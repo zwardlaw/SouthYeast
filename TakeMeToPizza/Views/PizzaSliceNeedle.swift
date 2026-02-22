@@ -24,12 +24,9 @@ struct PizzaSliceNeedle: View {
     let isAligned: Bool
 
     var body: some View {
-        PizzaSliceShape()
-            .fill(Color.pizzaOrange)
-            .overlay(
-                PizzaSliceShape()
-                    .stroke(Color.primary, lineWidth: 2)
-            )
+        Image("PizzaNeedle")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
             .shadow(
                 color: Color.pizzaGold.opacity(isAligned ? 0.75 : 0),
                 radius: 14
@@ -40,7 +37,7 @@ struct PizzaSliceNeedle: View {
                 axis: (x: 0, y: 1, z: 0)
             )
             .rotation3DEffect(
-                .degrees(motionService.pitch * 15),
+                .degrees(motionService.pitch * 40),
                 axis: (x: -1, y: 0, z: 0)
             )
     }

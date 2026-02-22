@@ -10,11 +10,15 @@ struct BrutalistCard: ViewModifier {
         content
             .background(Color.pizzaCard)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+            .background(
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .fill(Color.black)
+                    .offset(x: 4, y: 4)
+            )
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .stroke(Color.primary, lineWidth: 1.5)
             )
-            .shadow(color: .black, radius: 0, x: 4, y: 4)
     }
 }
 
@@ -30,11 +34,15 @@ struct BrutalistButton: ViewModifier {
             .padding(.vertical, 14)
             .background(Color.pizzaRed)
             .clipShape(RoundedRectangle(cornerRadius: 8))
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.black)
+                    .offset(x: 4, y: 4)
+            )
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(Color.primary, lineWidth: 1.5)
             )
-            .shadow(color: .black, radius: 0, x: 4, y: 4)
     }
 }
 

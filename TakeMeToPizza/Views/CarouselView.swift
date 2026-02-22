@@ -16,6 +16,8 @@ struct CarouselView: View {
     @State private var expandedID: UUID?
     // Guards against programmatic scroll triggering onChange re-entrantly.
     @State private var isUserScrolling = true
+    // Toggled to kick off the spin animation on MysteryToggleCard.
+    @State private var mysterySpinTrigger = false
 
     @AppStorage(AppStorageKey.mysteryMode) private var mysteryModeEnabled: Bool = false
 
@@ -66,7 +68,7 @@ struct CarouselView: View {
             LazyHStack(spacing: 12) {
                 // Mystery toggle card is the leftmost card — discovered by swiping right.
                 // Square shape, same height as place cards but narrower.
-                MysteryToggleCard(cardWidth: 100)
+                MysteryToggleCard(cardWidth: 100, spinTrigger: $mysterySpinTrigger)
                     .frame(width: 100)
                     .id(mysteryCardID)
 
@@ -102,7 +104,10 @@ struct CarouselView: View {
                     }
                 }
             }
-            .padding(.horizontal, sideInset)
+            // Shift left so the mystery card hides offscreen; only the
+            // place cards are visible until the user pulls right.
+            .padding(.leading, sideInset - 112)
+            .padding(.trailing, sideInset)
             .scrollTargetLayout()
         }
         .scrollTargetBehavior(.viewAligned)
@@ -116,8 +121,22 @@ struct CarouselView: View {
         }
         .onChange(of: scrollID) { _, newID in
             guard isUserScrolling, let newID else { return }
-            // Skip processing if the mystery toggle card is selected.
-            guard newID != mysteryCardID else { return }
+
+            if newID == mysteryCardID {
+                // Kick off the 360° spin (card toggles mystery mode at midpoint).
+                mysterySpinTrigger.toggle()
+                Task { @MainActor in
+                    // Wait for spin to finish (600ms) + brief settle.
+                    try? await Task.sleep(for: .milliseconds(800))
+                    // Snap back to first place card.
+                    isUserScrolling = false
+                    scrollID = placesService.places.first?.id
+                    try? await Task.sleep(for: .milliseconds(500))
+                    isUserScrolling = true
+                }
+                return
+            }
+
             if let place = placesService.places.first(where: { $0.id == newID }) {
                 appState.selectedPlace = place
                 expandedID = nil
@@ -129,7 +148,7 @@ struct CarouselView: View {
 
 // MARK: - CardView
 
-private struct CardView: View {
+struct CardView: View {
     let place: Place
     let isExpanded: Bool
     let mysteryModeEnabled: Bool
@@ -143,8 +162,7 @@ private struct CardView: View {
         VStack(alignment: .leading, spacing: 8) {
             // Collapsed content -- always visible.
             Text(place.name)
-                .font(.pizzaBody(size: 16))
-                .fontWeight(.semibold)
+                .font(.pizzaDisplay(size: 18))
                 .lineLimit(1)
                 .mysteryRedacted(isActive: mysteryModeEnabled)
 
@@ -289,3 +307,56 @@ private func openDirections(to place: Place, preferredApp: String) {
         UIApplication.shared.open(appleURL)
     }
 }
+
+// MARK: - Previews
+
+#if DEBUG
+#Preview("Card - Collapsed") {
+    CardView(
+        place: Place.samplePlaces[0],
+        isExpanded: false,
+        mysteryModeEnabled: false,
+        onTap: {}
+    )
+    .padding()
+    .background(Color.pizzaBackground)
+}
+
+#Preview("Card - Expanded") {
+    CardView(
+        place: Place.samplePlaces[0],
+        isExpanded: true,
+        mysteryModeEnabled: false,
+        onTap: {}
+    )
+    .padding()
+    .background(Color.pizzaBackground)
+}
+
+#Preview("Card - Mystery Mode") {
+    CardView(
+        place: Place.samplePlaces[0],
+        isExpanded: true,
+        mysteryModeEnabled: true,
+        onTap: {}
+    )
+    .padding()
+    .background(Color.pizzaBackground)
+}
+
+#Preview("Full Carousel") {
+    let location = LocationService()
+    let places = PlacesService()
+    places.places = Place.samplePlaces
+    let state = AppState(locationService: location, placesService: places)
+    state.selectedPlace = Place.samplePlaces.first
+    let network = NetworkMonitor()
+    return CarouselView()
+        .frame(height: 160)
+        .background(Color.pizzaBackground)
+        .environment(location)
+        .environment(places)
+        .environment(state)
+        .environment(network)
+}
+#endif

@@ -98,4 +98,38 @@ struct Place: Identifiable, Equatable {
     static func == (lhs: Place, rhs: Place) -> Bool {
         lhs.id == rhs.id
     }
+
+    // MARK: - Preview Sample Data
+
+    #if DEBUG
+    static let samplePlaces: [Place] = [
+        Place(
+            id: UUID(),
+            name: "Joe's Pizza",
+            coordinate: .init(latitude: 40.7308, longitude: -73.9892),
+            address: "7 Carmine St, New York",
+            phoneNumber: "(212) 366-1182",
+            websiteURL: URL(string: "https://joespizzanyc.com"),
+            distanceMeters: 320
+        ),
+        Place(
+            id: UUID(),
+            name: "Di Fara Pizza",
+            coordinate: .init(latitude: 40.6250, longitude: -73.9615),
+            address: "1424 Avenue J, Brooklyn",
+            phoneNumber: "(718) 258-1367",
+            websiteURL: nil,
+            distanceMeters: 870
+        ),
+        Place(
+            id: UUID(),
+            name: "Lucali",
+            coordinate: .init(latitude: 40.6862, longitude: -73.9968),
+            address: "575 Henry St, Brooklyn",
+            phoneNumber: nil,
+            websiteURL: nil,
+            distanceMeters: 1540
+        ),
+    ]
+    #endif
 }

@@ -37,31 +37,30 @@ extension View {
 
 /// The leftmost carousel card that reveals mystery mode.
 /// Discovered organically by swiping right past the first place card.
-/// Tapping toggles the mystery mode on/off with haptic feedback.
+/// A 360° spin toggles mystery mode, swapping the emoji at the midpoint.
 struct MysteryToggleCard: View {
     let cardWidth: CGFloat
+    @Binding var spinTrigger: Bool
 
     @AppStorage(AppStorageKey.mysteryMode) private var mysteryModeEnabled: Bool = false
+    @State private var spinAngle: Double = 0
 
     var body: some View {
-        VStack(spacing: 4) {
-            Text("🫣")
-                .font(.system(size: 36))
-
-            if mysteryModeEnabled {
-                Text("ON")
-                    .font(.pizzaBody(size: 10))
-                    .fontWeight(.bold)
-                    .foregroundStyle(Color.pizzaOrange)
+        Text(mysteryModeEnabled ? "😊" : "🫣")
+            .font(.system(size: 36))
+            .rotation3DEffect(.degrees(spinAngle), axis: (x: 0, y: 1, z: 0))
+        .frame(width: cardWidth)
+        .sensoryFeedback(.selection, trigger: mysteryModeEnabled)
+        .onChange(of: spinTrigger) {
+            // Full 360° Y-axis spin.
+            withAnimation(.easeInOut(duration: 0.6)) {
+                spinAngle += 360
             }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .brutalistCard()
-        .onTapGesture {
-            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+            // Swap emoji at the midpoint (view is edge-on, hides the switch).
+            Task { @MainActor in
+                try? await Task.sleep(for: .milliseconds(300))
                 mysteryModeEnabled.toggle()
             }
         }
-        .sensoryFeedback(.selection, trigger: mysteryModeEnabled)
     }
 }

@@ -200,3 +200,19 @@ struct PermissionRestrictedView: View {
         }
     }
 }
+
+#if DEBUG
+#Preview {
+    let location = LocationService()
+    let places = PlacesService()
+    places.places = Place.samplePlaces
+    let state = AppState(locationService: location, placesService: places)
+    state.selectedPlace = Place.samplePlaces.first
+    let network = NetworkMonitor()
+    return ContentView()
+        .environment(location)
+        .environment(places)
+        .environment(state)
+        .environment(network)
+}
+#endif

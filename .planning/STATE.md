@@ -12,9 +12,9 @@ See: .planning/PROJECT.md (updated 2026-02-21)
 ## Current Position
 
 Phase: 3 of 3 (Design and Personality) — In Progress
-Plan: 2 of 2 in current phase — AWAITING CHECKPOINT APPROVAL
-Status: Paused at checkpoint:human-verify — all code complete, pending device verification
-Last activity: 2026-02-22 — Completed 03-02-PLAN.md tasks, paused at checkpoint
+Plan: 2 of 2 in current phase — CHECKPOINT IN PROGRESS (iterating on visual feedback)
+Status: User testing on device, providing design feedback. Multiple fix commits applied.
+Last activity: 2026-02-22 — Iterating on checkpoint visual fixes
 
 Progress: [█████████░] 90%
 
@@ -81,7 +81,8 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-None.
+- User will illustrate custom pizza icon to replace triangle placeholder (PizzaSliceNeedle.swift)
+- Continue visual polish iteration after device testing
 
 ### Blockers/Concerns
 
@@ -93,5 +94,19 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: 03-02-PLAN.md paused at checkpoint:human-verify (all code committed)
-Resume file: None — resume after user approves checkpoint
+Stopped at: 03-02 checkpoint:human-verify — iterating on visual feedback
+Resume: User will provide custom pizza illustration, then re-test and approve checkpoint
+Post-approval: orchestrator completes verification, roadmap update, and offers next steps
+
+### Checkpoint Fix Commits (post-executor)
+- 91efbf4: flip pizza needle tip to point north, clean up brutalist style
+- 9de92fc: curved name label, solid shadows, square mystery card
+
+### User Feedback Summary
+- Pizza needle was upside down (crust north) — FIXED (tip now points north)
+- Double outlines on cards — FIXED (removed container border)
+- Wants Gumroad-style neobrutalism: solid black drop shadow, clean single border — FIXED
+- Mystery card was too large — FIXED (now square 100px)
+- Carousel started on mystery card — FIXED (starts on first pizza place)
+- Place name should rotate with compass on circular arc — FIXED (CurvedText)
+- Triangle is placeholder — user will illustrate custom pizza icon tomorrow

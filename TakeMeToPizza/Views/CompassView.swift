@@ -6,6 +6,7 @@ struct CompassView: View {
 
     /// MotionService is view-scoped (not app-level environment) -- it only runs
     /// when CompassView is visible. Battery-safe: start/stop with appearance.
+    @AppStorage(AppStorageKey.mysteryMode) private var mysteryModeEnabled: Bool = false
     @State private var motionService = MotionService()
 
     var body: some View {
@@ -39,7 +40,12 @@ struct CompassView: View {
                             .frame(width: 140, height: 140)
 
                         if let place = appState.selectedPlace {
-                            CurvedText(text: place.name, radius: 110, fontSize: 20)
+                            CurvedText(
+                                text: mysteryModeEnabled ? "PIZZA" : place.name.uppercased(),
+                                radius: 110,
+                                fontSize: 20,
+                                
+                            )
                         }
                     }
                     .rotationEffect(.degrees(appState.compassAngle))
@@ -81,3 +87,19 @@ struct CompassView: View {
         }
     }
 }
+
+#if DEBUG
+#Preview {
+    let location = LocationService()
+    let places = PlacesService()
+    places.places = Place.samplePlaces
+    let state = AppState(locationService: location, placesService: places)
+    state.selectedPlace = Place.samplePlaces.first
+    let network = NetworkMonitor()
+    return CompassView()
+        .environment(location)
+        .environment(places)
+        .environment(state)
+        .environment(network)
+}
+#endif
