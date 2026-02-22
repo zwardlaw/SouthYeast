@@ -23,9 +23,9 @@ struct CompassView: View {
                             .font(.system(size: 60))
                             .foregroundStyle(Color.pizzaOrange)
                         Text("Calibrating...")
-                            .font(.pizzaDisplay(size: 28))
+                            .font(.pizzaDisplay(size: 20))
                         Text("Move your phone in a figure-eight pattern")
-                            .font(.pizzaHeadline)
+                            .font(.pizzaBody(size: 14))
                             .foregroundStyle(.secondary)
                     }
                 } else {

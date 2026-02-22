@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - CarouselView
 
-/// Horizontal snap-to-card carousel displayed as a translucent overlay
+/// Horizontal snap-to-card carousel displayed as a brutalist overlay
 /// at the bottom of CompassView. Shows real nearby pizza places from
 /// PlacesService, handles expand/collapse of individual cards, and
 /// renders empty, error, and loading states.
@@ -16,6 +16,11 @@ struct CarouselView: View {
     @State private var expandedID: UUID?
     // Guards against programmatic scroll triggering onChange re-entrantly.
     @State private var isUserScrolling = true
+
+    @AppStorage(AppStorageKey.mysteryMode) private var mysteryModeEnabled: Bool = false
+
+    // Fixed ID for the mystery toggle card -- never collides with place UUIDs.
+    private let mysteryCardID = UUID(uuidString: "00000000-0000-0000-0000-000000000000")!
 
     var body: some View {
         GeometryReader { proxy in
@@ -49,7 +54,8 @@ struct CarouselView: View {
         }
         .frame(height: expandedID != nil ? 280 : 140)
         .animation(.spring(response: 0.35, dampingFraction: 0.75), value: expandedID)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20))
+        .background(Color.pizzaCard.opacity(0.95), in: RoundedRectangle(cornerRadius: 16))
+        .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.primary, lineWidth: 2))
     }
 
     // MARK: - Carousel
@@ -60,10 +66,17 @@ struct CarouselView: View {
 
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 12) {
+                // Mystery toggle card is the leftmost card (index 0).
+                // Swiping left past the first place card reveals it organically.
+                MysteryToggleCard(cardWidth: cardWidth)
+                    .frame(width: cardWidth)
+                    .id(mysteryCardID)
+
                 ForEach(placesService.places) { place in
                     CardView(
                         place: place,
                         isExpanded: expandedID == place.id,
+                        mysteryModeEnabled: mysteryModeEnabled,
                         onTap: {
                             withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
                                 if expandedID == place.id {
@@ -98,6 +111,8 @@ struct CarouselView: View {
         .scrollPosition(id: $scrollID)
         .onChange(of: scrollID) { _, newID in
             guard isUserScrolling, let newID else { return }
+            // Skip processing if the mystery toggle card is selected.
+            guard newID != mysteryCardID else { return }
             if let place = placesService.places.first(where: { $0.id == newID }) {
                 appState.selectedPlace = place
                 expandedID = nil
@@ -112,22 +127,26 @@ struct CarouselView: View {
 private struct CardView: View {
     let place: Place
     let isExpanded: Bool
+    let mysteryModeEnabled: Bool
     let onTap: () -> Void
 
-    @AppStorage("preferredMapsApp") private var preferredApp: String = "apple"
-    @AppStorage("hasChosenMapsApp") private var hasChosenMapsApp: Bool = false
+    @AppStorage(AppStorageKey.preferredMapsApp) private var preferredApp: String = "apple"
+    @AppStorage(AppStorageKey.hasChosenMapsApp) private var hasChosenMapsApp: Bool = false
     @State private var showMapsChoice = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             // Collapsed content -- always visible.
             Text(place.name)
-                .font(.headline)
+                .font(.pizzaBody(size: 16))
+                .fontWeight(.semibold)
                 .lineLimit(1)
+                .mysteryRedacted(isActive: mysteryModeEnabled)
 
             Text(place.distanceDisplayString)
-                .font(.subheadline)
+                .font(.pizzaBody(size: 14))
                 .foregroundStyle(.secondary)
+            // Distance is never redacted in mystery mode.
 
             // Expanded content -- conditional.
             if isExpanded {
@@ -135,25 +154,29 @@ private struct CardView: View {
 
                 if !place.address.isEmpty {
                     Label(place.address, systemImage: "mappin.circle")
-                        .font(.caption)
+                        .font(.pizzaBody(size: 12))
                         .foregroundStyle(.secondary)
                         .lineLimit(2)
+                        .mysteryRedacted(isActive: mysteryModeEnabled)
                 }
 
                 if let phone = place.phoneNumber {
                     Label(phone, systemImage: "phone")
-                        .font(.caption)
+                        .font(.pizzaBody(size: 12))
                         .foregroundStyle(.secondary)
+                        .mysteryRedacted(isActive: mysteryModeEnabled)
                 }
 
                 if let website = place.websiteURL {
                     Link(destination: website) {
                         Label("Website", systemImage: "globe")
-                            .font(.caption)
+                            .font(.pizzaBody(size: 12))
                     }
-                    .tint(.orange)
+                    .tint(.pizzaOrange)
+                    .mysteryRedacted(isActive: mysteryModeEnabled)
                 }
 
+                // Directions button is never redacted -- navigation always works.
                 Button {
                     if !hasChosenMapsApp {
                         showMapsChoice = true
@@ -164,21 +187,17 @@ private struct CardView: View {
                     HStack {
                         Image(systemName: "arrow.triangle.turn.up.right.diamond")
                         Text("Get Directions")
-                            .fontWeight(.semibold)
+                            .font(.pizzaDisplay(size: 16))
                     }
-                    .font(.subheadline)
-                    .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 10)
-                    .background(Color.orange)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
+                .brutalistButton()
                 .padding(.top, 4)
             }
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16))
+        .brutalistCard()
         .onTapGesture {
             onTap()
         }
@@ -210,12 +229,12 @@ private struct StateCard: View {
     var body: some View {
         VStack(spacing: 8) {
             Image(systemName: symbol)
-                .font(.system(size: 32))
-                .foregroundStyle(.secondary)
+                .font(.system(size: 36))
+                .foregroundStyle(Color.pizzaOrange)
             Text(title)
-                .font(.headline)
+                .font(.pizzaDisplay(size: 20))
             Text(subtitle)
-                .font(.caption)
+                .font(.pizzaBody(size: 13))
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
         }
@@ -231,10 +250,13 @@ private struct LoadingSkeleton: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
                 ForEach(0..<3, id: \.self) { _ in
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.secondary.opacity(0.3))
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color.pizzaCard)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.primary.opacity(0.3), lineWidth: 1.5)
+                        )
                         .frame(width: cardWidth, height: 80)
-                        .redacted(reason: .placeholder)
                 }
             }
             .padding(.horizontal, 20)
