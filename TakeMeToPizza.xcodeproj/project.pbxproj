@@ -18,6 +18,7 @@
 		AA000009 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000110 /* AppState.swift */; };
 		AA000010B /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000111 /* CompassView.swift */; };
 		AA000016 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000112 /* NetworkMonitor.swift */; };
+		AA000017 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000113 /* CarouselView.swift */; };
 		AA000030 /* BearingMathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000130 /* BearingMathTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		AA000110 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		AA000111 /* CompassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
 		AA000112 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		AA000113 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		AA000120 /* TakeMeToPizzaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TakeMeToPizzaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA000130 /* BearingMathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearingMathTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				AA000111 /* CompassView.swift */,
+				AA000113 /* CarouselView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				AA000009 /* AppState.swift in Sources */,
 				AA000010B /* CompassView.swift in Sources */,
 				AA000016 /* NetworkMonitor.swift in Sources */,
+				AA000017 /* CarouselView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
