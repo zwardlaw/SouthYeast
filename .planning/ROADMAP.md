@@ -42,16 +42,16 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. A horizontal scrollable carousel shows real nearby pizza places sorted closest-first, with name and distance on each card
   2. Snapping to a card repoints the compass at that place
-  3. Tapping a card expands it to show address, hours, and rating
-  4. Tapping directions opens Google Maps (with Apple Maps fallback) and begins turn-by-turn navigation
+  3. Tapping a card expands it to show address, phone, and directions button
+  4. Tapping directions opens Google Maps (with Apple Maps fallback) and begins walking navigation
   5. Scrolling near the end of the list loads additional places automatically
   6. Distance values on cards update as the user moves through the city
   7. Empty state and error states (no internet, no pizza nearby, location denied) display useful messages instead of blank screens
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: PlacesService — MKLocalSearch integration (INFR-06), Place value type, batch loading, 50m re-query threshold
-- [ ] 02-02: CarouselView — snap-to-card scrollTargetBehavior, card expand, directions handoff, empty/error states, haptic pulse on compass alignment
+- [ ] 02-01-PLAN.md — PlacesService MKLocalSearch integration, Place model expansion, NetworkMonitor, AppState alignment detection
+- [ ] 02-02-PLAN.md — CarouselView with snap-to-card, card expand, directions handoff, empty/error states, haptic compass alignment, full wiring
 
 ### Phase 3: Design and Personality
 **Goal**: The app looks and feels like Take Me to Pizza — bold, physical, and surprising
