@@ -7,6 +7,7 @@ struct TakeMeToPizzaApp: App {
     @State private var locationService: LocationService
     @State private var placesService: PlacesService
     @State private var appState: AppState
+    @State private var networkMonitor: NetworkMonitor
 
     init() {
         let loc = LocationService()
@@ -15,6 +16,7 @@ struct TakeMeToPizzaApp: App {
         _locationService = State(initialValue: loc)
         _placesService = State(initialValue: places)
         _appState = State(initialValue: state)
+        _networkMonitor = State(initialValue: NetworkMonitor())
     }
 
     var body: some Scene {
@@ -23,6 +25,7 @@ struct TakeMeToPizzaApp: App {
                 .environment(locationService)
                 .environment(placesService)
                 .environment(appState)
+                .environment(networkMonitor)
         }
     }
 }

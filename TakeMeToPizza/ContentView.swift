@@ -4,6 +4,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(LocationService.self) private var locationService
     @Environment(AppState.self) private var appState
+    @Environment(PlacesService.self) private var placesService
 
     var body: some View {
         Group {
@@ -16,6 +17,18 @@ struct ContentView: View {
                 PermissionRestrictedView()
             case .authorized:
                 CompassView()
+                    .task {
+                        // Trigger initial fetch if location is already available
+                        // when the view appears (e.g., after permission was already granted).
+                        if let location = locationService.location,
+                           placesService.places.isEmpty {
+                            await placesService.fetchNearby(userLocation: location)
+                            if appState.selectedPlace == nil {
+                                appState.selectedPlace = placesService.places.first
+                                appState.updateCompassAngle()
+                            }
+                        }
+                    }
             }
         }
         .onChange(of: scenePhase) { _, newPhase in
@@ -35,6 +48,25 @@ struct ContentView: View {
         }
         .onChange(of: appState.selectedPlace) { _, _ in
             appState.updateCompassAngle()
+        }
+        .onChange(of: locationService.location) { _, newLocation in
+            guard let location = newLocation else { return }
+            if placesService.places.isEmpty {
+                // Initial fetch -- places not yet loaded.
+                Task {
+                    await placesService.fetchNearby(userLocation: location)
+                    // Set selectedPlace to nearest after first fetch.
+                    if appState.selectedPlace == nil {
+                        appState.selectedPlace = placesService.places.first
+                        appState.updateCompassAngle()
+                    }
+                }
+            } else {
+                // Subsequent movement -- update distances only (no new MKLocalSearch).
+                // LocationService.distanceFilter = 50m, so this fires every 50m of movement.
+                placesService.updateDistances(userLocation: location)
+                appState.updateCompassAngle()
+            }
         }
     }
 }
