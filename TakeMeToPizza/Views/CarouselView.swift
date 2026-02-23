@@ -73,11 +73,12 @@ struct CarouselView: View {
         let sideInset = (totalWidth - cardWidth) / 2
 
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 12) {
-                // Mystery card lives OUTSIDE the scroll target layout so its
-                // 100pt width doesn't confuse .viewAligned snap calculations.
+            LazyHStack(spacing: 12) {
+                // Mystery card uses the same cardWidth as place cards so
+                // .viewAligned has uniform snap targets. Emoji is centered
+                // within the wider frame; the extra space is invisible.
                 MysteryToggleCard(cardWidth: 100, spinTrigger: $mysterySpinTrigger)
-                    .frame(width: 100)
+                    .frame(width: cardWidth)
                     .id(mysteryCardID)
 
                 let loadMoreThresholdID: UUID? = {
@@ -86,41 +87,35 @@ struct CarouselView: View {
                     return p[p.count - 3].id
                 }()
 
-                // Only place cards participate in scroll target snapping.
-                LazyHStack(spacing: 12) {
-                    ForEach(placesService.places) { place in
-                        CardView(
-                            place: place,
-                            isExpanded: expandedID == place.id,
-                            mysteryModeEnabled: mysteryModeEnabled,
-                            onTap: {
-                                withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
-                                    if expandedID == place.id {
-                                        expandedID = nil
-                                    } else {
-                                        expandedID = place.id
-                                    }
+                ForEach(placesService.places) { place in
+                    CardView(
+                        place: place,
+                        isExpanded: expandedID == place.id,
+                        mysteryModeEnabled: mysteryModeEnabled,
+                        onTap: {
+                            withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
+                                if expandedID == place.id {
+                                    expandedID = nil
+                                } else {
+                                    expandedID = place.id
                                 }
                             }
-                        )
-                        .frame(width: cardWidth)
-                        .id(place.id)
-                        .onAppear {
-                            if place.id == loadMoreThresholdID,
-                               let location = locationService.location {
-                                Task {
-                                    await placesService.loadMore(userLocation: location)
-                                }
+                        }
+                    )
+                    .frame(width: cardWidth)
+                    .id(place.id)
+                    .onAppear {
+                        if place.id == loadMoreThresholdID,
+                           let location = locationService.location {
+                            Task {
+                                await placesService.loadMore(userLocation: location)
                             }
                         }
                     }
                 }
-                .scrollTargetLayout()
             }
-            // Shift left so the mystery card hides offscreen; only the
-            // place cards are visible until the user pulls right.
-            .padding(.leading, sideInset - 112)
-            .padding(.trailing, sideInset)
+            .padding(.horizontal, sideInset)
+            .scrollTargetLayout()
         }
         .scrollTargetBehavior(.viewAligned)
         .scrollPosition(id: $scrollID)
