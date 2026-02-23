@@ -11,6 +11,7 @@ struct CompassView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var motionService = MotionService()
     @State private var showSettings = false
+    @State private var mysterySpinAngle: Double = 0
 
     private var compassAccessibilityLabel: String {
         guard let place = appState.selectedPlace else { return "Pizza compass" }
@@ -59,6 +60,21 @@ struct CompassView: View {
                     ZStack {
                         PizzaSliceNeedle(motionService: motionService, isAligned: appState.isAligned)
                             .frame(width: 140, height: 140)
+                            .rotation3DEffect(.degrees(mysterySpinAngle), axis: (x: 0, y: 1, z: 0))
+                            .onTapGesture(count: 3) {
+                                if reduceMotion {
+                                    mysteryModeEnabled.toggle()
+                                } else {
+                                    withAnimation(.easeInOut(duration: 0.6)) {
+                                        mysterySpinAngle += 360
+                                    }
+                                    Task { @MainActor in
+                                        try? await Task.sleep(for: .milliseconds(300))
+                                        mysteryModeEnabled.toggle()
+                                    }
+                                }
+                            }
+                            .sensoryFeedback(.selection, trigger: mysteryModeEnabled)
 
                         if let place = appState.selectedPlace {
                             CurvedText(

@@ -14,16 +14,9 @@ struct CarouselView: View {
 
     @State private var scrollID: UUID?
     @State private var expandedID: UUID?
-    // Guards against programmatic scroll triggering onChange re-entrantly.
-    @State private var isUserScrolling = true
-    // Toggled to kick off the spin animation on MysteryToggleCard.
-    @State private var mysterySpinTrigger = false
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @AppStorage(AppStorageKey.mysteryMode) private var mysteryModeEnabled: Bool = false
-
-    // Fixed ID for the mystery toggle card -- never collides with place UUIDs.
-    private let mysteryCardID = UUID(uuidString: "00000000-0000-0000-0000-000000000000")!
 
     var body: some View {
         GeometryReader { proxy in
@@ -74,16 +67,6 @@ struct CarouselView: View {
 
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 12) {
-                // Invisible full-width scroll target with the mystery emoji
-                // overlaid. Uniform cardWidth keeps .viewAligned snapping clean.
-                // Hidden offscreen left — revealed by swiping right.
-                Color.clear
-                    .frame(width: cardWidth)
-                    .overlay {
-                        MysteryToggleCard(cardWidth: 80, spinTrigger: $mysterySpinTrigger)
-                    }
-                    .id(mysteryCardID)
-
                 let loadMoreThresholdID: UUID? = {
                     let p = placesService.places
                     guard p.count >= 3 else { return nil }
@@ -125,32 +108,12 @@ struct CarouselView: View {
         .scrollTargetBehavior(.viewAligned)
         .scrollPosition(id: $scrollID)
         .task(id: placesService.places.first?.id) {
-            // Scroll to first place card on initial load (past the mystery card).
-            if scrollID == nil || scrollID == mysteryCardID,
-               let firstPlace = placesService.places.first {
+            if scrollID == nil, let firstPlace = placesService.places.first {
                 scrollID = firstPlace.id
             }
         }
         .onChange(of: scrollID) { _, newID in
-            guard isUserScrolling, let newID else { return }
-
-            if newID == mysteryCardID {
-                // Collapse any expanded card before the snap-back.
-                expandedID = nil
-                // Kick off the 360° spin (card toggles mystery mode at midpoint).
-                mysterySpinTrigger.toggle()
-                Task { @MainActor in
-                    // Wait for spin to finish (600ms) + brief settle.
-                    try? await Task.sleep(for: .milliseconds(800))
-                    // Snap back to first place card.
-                    isUserScrolling = false
-                    scrollID = placesService.places.first?.id
-                    try? await Task.sleep(for: .milliseconds(500))
-                    isUserScrolling = true
-                }
-                return
-            }
-
+            guard let newID else { return }
             if let place = placesService.places.first(where: { $0.id == newID }) {
                 appState.selectedPlace = place
                 expandedID = nil
