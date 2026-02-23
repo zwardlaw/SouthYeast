@@ -74,9 +74,14 @@ struct CarouselView: View {
 
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 12) {
-                // Mystery toggle card — narrow, hidden offscreen to the left.
-                MysteryToggleCard(cardWidth: 80, spinTrigger: $mysterySpinTrigger)
-                    .frame(width: 80)
+                // Invisible full-width scroll target with the mystery emoji
+                // overlaid. Uniform cardWidth keeps .viewAligned snapping clean.
+                // Hidden offscreen left — revealed by swiping right.
+                Color.clear
+                    .frame(width: cardWidth)
+                    .overlay {
+                        MysteryToggleCard(cardWidth: 80, spinTrigger: $mysterySpinTrigger)
+                    }
                     .id(mysteryCardID)
 
                 let loadMoreThresholdID: UUID? = {
@@ -114,9 +119,7 @@ struct CarouselView: View {
                     }
                 }
             }
-            // Shift left so mystery card hides offscreen (80 + 12 spacing = 92).
-            .padding(.leading, sideInset - 108)
-            .padding(.trailing, sideInset)
+            .padding(.horizontal, sideInset)
             .scrollTargetLayout()
         }
         .scrollTargetBehavior(.viewAligned)
