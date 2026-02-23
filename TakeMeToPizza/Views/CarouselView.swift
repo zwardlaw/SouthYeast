@@ -115,7 +115,7 @@ struct CarouselView: View {
                 }
             }
             // Shift left so mystery card hides offscreen (80 + 12 spacing = 92).
-            .padding(.leading, sideInset - 92)
+            .padding(.leading, sideInset - 108)
             .padding(.trailing, sideInset)
             .scrollTargetLayout()
         }
