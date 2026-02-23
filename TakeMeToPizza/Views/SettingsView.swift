@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @AppStorage(AppStorageKey.mysteryMode) private var mysteryModeEnabled: Bool = false
+    @AppStorage(AppStorageKey.distanceUnit) private var distanceUnit: DistanceUnit = .pizzaSlices
     @AppStorage(AppStorageKey.preferredMapsApp) private var preferredApp: String = "apple"
     @AppStorage(AppStorageKey.hasChosenMapsApp) private var hasChosenMapsApp: Bool = false
 
@@ -15,6 +16,14 @@ struct SettingsView: View {
                     Text("Hides restaurant names so the pizza slice picks for you.")
                         .font(.pizzaBody(size: 13))
                         .foregroundStyle(.secondary)
+                }
+
+                Section("Distance") {
+                    Picker("Unit", selection: $distanceUnit) {
+                        ForEach(DistanceUnit.allCases, id: \.self) { unit in
+                            Text(unit.displayName).tag(unit)
+                        }
+                    }
                 }
 
                 Section("Directions") {

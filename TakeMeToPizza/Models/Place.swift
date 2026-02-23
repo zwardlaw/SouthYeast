@@ -2,7 +2,7 @@ import Foundation
 import CoreLocation
 import MapKit
 
-struct Place: Identifiable, Equatable {
+struct Place: Identifiable, Equatable, Codable {
     let id: UUID
     let name: String
     let coordinate: CLLocationCoordinate2D
@@ -42,8 +42,8 @@ struct Place: Identifiable, Equatable {
         self.distanceMeters = userLocation.distance(from: itemLocation)
     }
 
-    /// Internal memberwise init used by withUpdatedDistance.
-    private init(
+    /// Memberwise init used by withUpdatedDistance, Codable, and tests.
+    init(
         id: UUID,
         name: String,
         coordinate: CLLocationCoordinate2D,
@@ -61,6 +61,37 @@ struct Place: Identifiable, Equatable {
         self.distanceMeters = distanceMeters
     }
 
+    // MARK: - Codable
+
+    private enum CodingKeys: String, CodingKey {
+        case id, name, latitude, longitude, address, phoneNumber, websiteURL, distanceMeters
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id = try c.decode(UUID.self, forKey: .id)
+        name = try c.decode(String.self, forKey: .name)
+        let lat = try c.decode(Double.self, forKey: .latitude)
+        let lon = try c.decode(Double.self, forKey: .longitude)
+        coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        address = try c.decode(String.self, forKey: .address)
+        phoneNumber = try c.decodeIfPresent(String.self, forKey: .phoneNumber)
+        websiteURL = try c.decodeIfPresent(URL.self, forKey: .websiteURL)
+        distanceMeters = try c.decode(Double.self, forKey: .distanceMeters)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encode(id, forKey: .id)
+        try c.encode(name, forKey: .name)
+        try c.encode(coordinate.latitude, forKey: .latitude)
+        try c.encode(coordinate.longitude, forKey: .longitude)
+        try c.encode(address, forKey: .address)
+        try c.encodeIfPresent(phoneNumber, forKey: .phoneNumber)
+        try c.encodeIfPresent(websiteURL, forKey: .websiteURL)
+        try c.encode(distanceMeters, forKey: .distanceMeters)
+    }
+
     // MARK: - Computed Properties
 
     /// Distance expressed as pizza slices (1 slice = 8 inches = 0.2032 meters).
@@ -71,6 +102,11 @@ struct Place: Identifiable, Equatable {
     /// Human-readable distance string using pizza slices as unit.
     var distanceDisplayString: String {
         "\(distanceInPizzaSlices.formatted()) slices away"
+    }
+
+    /// Distance string formatted for the given unit preference.
+    func distanceDisplayString(for unit: DistanceUnit) -> String {
+        distanceMeters.distanceString(unit: unit)
     }
 
     // MARK: - Distance Update

@@ -1,0 +1,48 @@
+# SwiftLint configuration for Take Me To Pizza
+# Enforced in CI via GitHub Actions (no local build phase required).
+
+excluded:
+  - .build
+  - DerivedData
+
+# Tune thresholds to match existing code style.
+line_length:
+  warning: 140
+  error: 200
+
+file_length:
+  warning: 500
+  error: 1000
+
+type_body_length:
+  warning: 400
+  error: 600
+
+function_body_length:
+  warning: 60
+  error: 100
+
+# Allow short identifiers common in math/geometry code.
+identifier_name:
+  min_length:
+    warning: 1
+  excluded:
+    - id
+    - x
+    - y
+    - i
+    - b
+    - d
+
+# Opt-in rules worth enforcing.
+opt_in_rules:
+  - sorted_imports
+  - closure_spacing
+  - empty_count
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+
+# Disabled rules that conflict with project style.
+disabled_rules:
+  - trailing_comma
+  - opening_brace

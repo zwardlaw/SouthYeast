@@ -8,6 +8,7 @@ struct CompassView: View {
     /// MotionService is view-scoped (not app-level environment) -- it only runs
     /// when CompassView is visible. Battery-safe: start/stop with appearance.
     @AppStorage(AppStorageKey.mysteryMode) private var mysteryModeEnabled: Bool = false
+    @AppStorage(AppStorageKey.distanceUnit) private var distanceUnit: DistanceUnit = .pizzaSlices
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var motionService = MotionService()
     @State private var showSettings = false
@@ -16,8 +17,9 @@ struct CompassView: View {
     private var compassAccessibilityLabel: String {
         guard let place = appState.selectedPlace else { return "Pizza compass" }
         let name = mysteryModeEnabled ? "a mystery pizza place" : place.name
+        let distance = place.distanceDisplayString(for: distanceUnit)
         let aligned = appState.isAligned ? "You are facing it." : "Turn to follow the needle."
-        return "Compass pointing to \(name), \(place.distanceDisplayString). \(aligned)"
+        return "Compass pointing to \(name), \(distance). \(aligned)"
     }
 
     var body: some View {

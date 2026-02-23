@@ -30,6 +30,13 @@
 		AA000028 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000124 /* OnboardingView.swift */; };
 		1C588C7A377E4EB89E393300 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF8F2168DD4F8FA6307F6D /* SettingsView.swift */; };
 		AA000029 /* MysteryModeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000125 /* MysteryModeModifier.swift */; };
+		AA000031 /* DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000131 /* DistanceUnit.swift */; };
+		AA000032 /* PlacesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000132 /* PlacesCache.swift */; };
+		AA000033 /* DistanceUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000133 /* DistanceUnitTests.swift */; };
+		AA000034 /* PlaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000134 /* PlaceTests.swift */; };
+		AA000035 /* PlacesCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000135 /* PlacesCacheTests.swift */; };
+		AA000036 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000136 /* AppStateTests.swift */; };
+		AA000037 /* PlacesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000137 /* PlacesServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +76,13 @@
 		AA000124 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		AECF8F2168DD4F8FA6307F6D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AA000125 /* MysteryModeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MysteryModeModifier.swift; sourceTree = "<group>"; };
+		AA000131 /* DistanceUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceUnit.swift; sourceTree = "<group>"; };
+		AA000132 /* PlacesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCache.swift; sourceTree = "<group>"; };
+		AA000133 /* DistanceUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceUnitTests.swift; sourceTree = "<group>"; };
+		AA000134 /* PlaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTests.swift; sourceTree = "<group>"; };
+		AA000135 /* PlacesCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCacheTests.swift; sourceTree = "<group>"; };
+		AA000136 /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
+		AA000137 /* PlacesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +135,7 @@
 				AA000108 /* LocationService.swift */,
 				AA000112 /* NetworkMonitor.swift */,
 				AA000119 /* MotionService.swift */,
+				AA000132 /* PlacesCache.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -130,6 +145,7 @@
 			children = (
 				AA000106 /* Place.swift */,
 				AA000110 /* AppState.swift */,
+				AA000131 /* DistanceUnit.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,6 +185,11 @@
 			isa = PBXGroup;
 			children = (
 				AA000130 /* BearingMathTests.swift */,
+				AA000133 /* DistanceUnitTests.swift */,
+				AA000134 /* PlaceTests.swift */,
+				AA000135 /* PlacesCacheTests.swift */,
+				AA000136 /* AppStateTests.swift */,
+				AA000137 /* PlacesServiceTests.swift */,
 			);
 			path = TakeMeToPizzaTests;
 			sourceTree = "<group>";
@@ -313,6 +334,8 @@
 				AA000028 /* OnboardingView.swift in Sources */,
 				1C588C7A377E4EB89E393300 /* SettingsView.swift in Sources */,
 				AA000029 /* MysteryModeModifier.swift in Sources */,
+				AA000031 /* DistanceUnit.swift in Sources */,
+				AA000032 /* PlacesCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +344,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA000030 /* BearingMathTests.swift in Sources */,
+				AA000033 /* DistanceUnitTests.swift in Sources */,
+				AA000034 /* PlaceTests.swift in Sources */,
+				AA000035 /* PlacesCacheTests.swift in Sources */,
+				AA000036 /* AppStateTests.swift in Sources */,
+				AA000037 /* PlacesServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

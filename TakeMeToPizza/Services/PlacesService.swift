@@ -34,9 +34,16 @@ final class PlacesService {
     // MARK: - Public API
 
     /// Fetches pizza places near the user's current location using MKLocalSearch.
+    /// Checks the disk cache first; falls back to network on miss or expiry.
     /// Resets search radius on each fresh fetch.
     /// Sets `isLoading` during the operation; populates `places` or `error` on completion.
     func fetchNearby(userLocation: CLLocation) async {
+        // Serve from cache if fresh.
+        if let cached = PlacesCache.load(currentLocation: userLocation) {
+            places = cached
+            return
+        }
+
         isLoading = true
         error = nil
         searchRegionRadiusKm = 1.0
@@ -54,6 +61,7 @@ final class PlacesService {
                 error = .noResults
             } else {
                 places = sorted
+                PlacesCache.save(places: sorted, userLocation: userLocation)
             }
         } catch {
             self.error = .searchFailed(error)
@@ -92,6 +100,7 @@ final class PlacesService {
             var merged = places + newPlaces
             merged.sort { $0.distanceMeters < $1.distanceMeters }
             places = merged
+            PlacesCache.save(places: merged, userLocation: userLocation)
         } catch {
             self.error = .searchFailed(error)
         }

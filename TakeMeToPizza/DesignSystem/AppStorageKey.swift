@@ -15,4 +15,7 @@ enum AppStorageKey {
 
     /// Whether the user has explicitly chosen a maps app.
     static let hasChosenMapsApp = "hasChosenMapsApp"
+
+    /// User's preferred distance display unit (pizzaSlices / imperial / metric).
+    static let distanceUnit = "distanceUnit"
 }

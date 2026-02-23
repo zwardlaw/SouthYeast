@@ -133,7 +133,12 @@ struct CardView: View {
 
     @AppStorage(AppStorageKey.preferredMapsApp) private var preferredApp: String = "apple"
     @AppStorage(AppStorageKey.hasChosenMapsApp) private var hasChosenMapsApp: Bool = false
+    @AppStorage(AppStorageKey.distanceUnit) private var distanceUnit: DistanceUnit = .pizzaSlices
     @State private var showMapsChoice = false
+
+    private var distanceText: String {
+        place.distanceDisplayString(for: distanceUnit)
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -143,7 +148,7 @@ struct CardView: View {
                 .lineLimit(1)
                 .mysteryRedacted(isActive: mysteryModeEnabled)
 
-            Text(place.distanceDisplayString)
+            Text(distanceText)
                 .font(.pizzaBody(size: 14))
                 .foregroundStyle(.secondary)
             // Distance is never redacted in mystery mode.
@@ -201,7 +206,7 @@ struct CardView: View {
         .brutalistCard()
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(mysteryModeEnabled ? "Mystery pizza place" : place.name)
-        .accessibilityValue(place.distanceDisplayString)
+        .accessibilityValue(distanceText)
         .accessibilityHint(isExpanded ? "Tap to collapse" : "Tap to expand details")
         .accessibilityAddTraits(.isButton)
         .onTapGesture {
