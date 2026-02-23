@@ -132,6 +132,8 @@ struct CarouselView: View {
             guard isUserScrolling, let newID else { return }
 
             if newID == mysteryCardID {
+                // Collapse any expanded card before the snap-back.
+                expandedID = nil
                 // Kick off the 360° spin (card toggles mystery mode at midpoint).
                 mysterySpinTrigger.toggle()
                 Task { @MainActor in

@@ -30,6 +30,10 @@
 	<array>
 		<string>comgooglemaps</string>
 	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SpaceGrotesk-VariableFont_wght.ttf</string>
