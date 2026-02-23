@@ -74,11 +74,9 @@ struct CarouselView: View {
 
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 12) {
-                // Mystery card uses the same cardWidth as place cards so
-                // .viewAligned has uniform snap targets. Emoji is centered
-                // within the wider frame; the extra space is invisible.
-                MysteryToggleCard(cardWidth: 100, spinTrigger: $mysterySpinTrigger)
-                    .frame(width: cardWidth)
+                // Mystery toggle card — narrow, hidden offscreen to the left.
+                MysteryToggleCard(cardWidth: 80, spinTrigger: $mysterySpinTrigger)
+                    .frame(width: 80)
                     .id(mysteryCardID)
 
                 let loadMoreThresholdID: UUID? = {
@@ -99,6 +97,8 @@ struct CarouselView: View {
                                 } else {
                                     expandedID = place.id
                                 }
+                                // Re-assert snap position to prevent drift.
+                                scrollID = place.id
                             }
                         }
                     )
@@ -114,7 +114,9 @@ struct CarouselView: View {
                     }
                 }
             }
-            .padding(.horizontal, sideInset)
+            // Shift left so mystery card hides offscreen (80 + 12 spacing = 92).
+            .padding(.leading, sideInset - 92)
+            .padding(.trailing, sideInset)
             .scrollTargetLayout()
         }
         .scrollTargetBehavior(.viewAligned)
