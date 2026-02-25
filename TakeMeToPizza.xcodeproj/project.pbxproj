@@ -37,6 +37,8 @@
 		AA000035 /* PlacesCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000135 /* PlacesCacheTests.swift */; };
 		AA000036 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000136 /* AppStateTests.swift */; };
 		AA000037 /* PlacesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000137 /* PlacesServiceTests.swift */; };
+		AA000038 /* TipJarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000138 /* TipJarService.swift */; };
+		AA000039 /* TipProducts.storekit in Resources */ = {isa = PBXBuildFile; fileRef = AA000139 /* TipProducts.storekit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		AA000135 /* PlacesCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCacheTests.swift; sourceTree = "<group>"; };
 		AA000136 /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
 		AA000137 /* PlacesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesServiceTests.swift; sourceTree = "<group>"; };
+		AA000138 /* TipJarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarService.swift; sourceTree = "<group>"; };
+		AA000139 /* TipProducts.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TipProducts.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,7 @@
 				AA000112 /* NetworkMonitor.swift */,
 				AA000119 /* MotionService.swift */,
 				AA000132 /* PlacesCache.swift */,
+				AA000138 /* TipJarService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 				AA000103 /* Assets.xcassets */,
 				AA000104 /* PrivacyInfo.xcprivacy */,
 				AA000127 /* Fonts */,
+				AA000139 /* TipProducts.storekit */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -305,6 +311,7 @@
 				AA000003 /* Assets.xcassets in Resources */,
 				AA000004 /* PrivacyInfo.xcprivacy in Resources */,
 				AA000025 /* SpaceGrotesk-VariableFont_wght.ttf in Resources */,
+				AA000039 /* TipProducts.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +343,7 @@
 				AA000029 /* MysteryModeModifier.swift in Sources */,
 				AA000031 /* DistanceUnit.swift in Sources */,
 				AA000032 /* PlacesCache.swift in Sources */,
+				AA000038 /* TipJarService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

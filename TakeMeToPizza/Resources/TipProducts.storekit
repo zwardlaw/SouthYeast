@@ -1,0 +1,64 @@
+{
+  "identifier" : "4B8A7C2E-1F3D-4A5B-9E6C-0D2F8A3B5C7E",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "tip_slice_001",
+      "localizations" : [
+        {
+          "description" : "Buy the dev a slice of pizza",
+          "displayName" : "A Slice",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "tip.slice",
+      "referenceName" : "Tip - A Slice",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "tip_pie_001",
+      "localizations" : [
+        {
+          "description" : "Buy the dev a whole pie",
+          "displayName" : "A Whole Pie",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "tip.pie",
+      "referenceName" : "Tip - A Whole Pie",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "9.99",
+      "familyShareable" : false,
+      "internalID" : "tip_party_001",
+      "localizations" : [
+        {
+          "description" : "Throw the dev a pizza party",
+          "displayName" : "The Pizza Party",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "tip.party",
+      "referenceName" : "Tip - The Pizza Party",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "takemetopizza",
+    "_developerTeamID" : "8T3PR66H97"
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}
