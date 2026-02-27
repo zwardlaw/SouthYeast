@@ -310,6 +310,7 @@ private func openDirections(to place: Place, preferredApp: String) {
        UIApplication.shared.canOpenURL(googleURL) {
         var components = URLComponents()
         components.scheme = "comgooglemaps"
+        components.host = ""
         components.queryItems = [
             URLQueryItem(name: "saddr", value: ""),
             URLQueryItem(name: "daddr", value: "\(lat),\(lng)"),

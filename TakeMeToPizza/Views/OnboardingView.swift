@@ -18,9 +18,10 @@ struct OnboardingView: View {
             VStack(spacing: 16) {
                 Spacer()
 
-                PizzaSliceShape()
-                    .fill(Color.pizzaOrange)
-                    .frame(width: 160, height: 160)
+                Image("PizzaNeedle")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
                     .scaleEffect(sliceScale)
                     .animation(
                         reduceMotion ? .none : .spring(response: 0.6, dampingFraction: 0.65),

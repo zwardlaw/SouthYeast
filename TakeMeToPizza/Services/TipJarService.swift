@@ -22,6 +22,7 @@ final class TipJarService {
     }
 
     private(set) var products: [Product] = []
+    private(set) var loadError: String?
     var purchaseState: PurchaseState = .ready
 
     private nonisolated(unsafe) var updatesTask: Task<Void, Never>?
@@ -43,8 +44,10 @@ final class TipJarService {
         do {
             let fetched = try await Product.products(for: Self.productIDs)
             products = fetched.sorted { $0.price < $1.price }
+            loadError = fetched.isEmpty ? "No products returned for IDs: \(Self.productIDs)" : nil
         } catch {
             products = []
+            loadError = error.localizedDescription
         }
     }
 

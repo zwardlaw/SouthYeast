@@ -66,8 +66,17 @@ struct SettingsView: View {
 
     @ViewBuilder
     private var tipJarSection: some View {
-        if !tipService.products.isEmpty {
-            Section {
+        Section {
+            if tipService.products.isEmpty {
+                if let error = tipService.loadError {
+                    Text(error)
+                        .font(.pizzaBody(size: 13))
+                        .foregroundStyle(.secondary)
+                } else {
+                    ProgressView()
+                        .frame(maxWidth: .infinity)
+                }
+            } else {
                 VStack(spacing: 12) {
                     ForEach(tipService.products, id: \.id) { product in
                         tipButton(for: product)
@@ -88,12 +97,12 @@ struct SettingsView: View {
                     }
                 }
                 .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-            } header: {
-                Text("Buy Me a Slice")
-            } footer: {
-                Text("This app is 100% free. Tips go straight to the pizza fund.")
-                    .font(.pizzaBody(size: 12))
             }
+        } header: {
+            Text("Buy Me a Slice")
+        } footer: {
+            Text("This app is 100% free. Tips go straight to the pizza fund.")
+                .font(.pizzaBody(size: 12))
         }
     }
 
