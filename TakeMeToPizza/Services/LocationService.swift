@@ -32,6 +32,10 @@ final class LocationService: NSObject {
     var headingAccuracy: Double = -1.0
     var authorizationStatus: CLAuthorizationStatus = .notDetermined
 
+    /// When true, startUpdating/stopUpdating are no-ops. Used in demo mode
+    /// to prevent CLLocationManager from triggering the system permission prompt.
+    var isDemoMode = false
+
     // MARK: Computed
 
     var permissionStatus: PermissionStatus {
@@ -55,7 +59,8 @@ final class LocationService: NSObject {
 
     // MARK: Init
 
-    override init() {
+    init(demoMode: Bool = false) {
+        self.isDemoMode = demoMode
         manager = CLLocationManager()
         super.init()
         manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -67,6 +72,7 @@ final class LocationService: NSObject {
     // MARK: Public API
 
     func startUpdating() {
+        if isDemoMode { return }
         switch manager.authorizationStatus {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
@@ -79,6 +85,7 @@ final class LocationService: NSObject {
     }
 
     func stopUpdating() {
+        if isDemoMode { return }
         manager.stopUpdatingLocation()
         manager.stopUpdatingHeading()
         // Reset to -1 so calibration overlay appears on next resume.
@@ -93,6 +100,7 @@ extension LocationService: CLLocationManagerDelegate {
     nonisolated func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         let status = manager.authorizationStatus
         Task { @MainActor in
+            if self.isDemoMode { return }
             self.authorizationStatus = status
             if status == .authorizedWhenInUse || status == .authorizedAlways {
                 self.manager.startUpdatingLocation()

@@ -1,0 +1,54 @@
+{
+  "default": {
+    "keyword": {
+      "font": "./fonts/Impact.ttf",
+      "color": "#FF6B00"
+    },
+    "title": {
+      "font": "./fonts/SpaceGrotesk-VariableFont_wght.ttf",
+      "color": "#1A1A1A"
+    },
+    "background": "#FFF8F0",
+    "padding": 50,
+    "show_complete_frame": false,
+    "stack_title": false
+  },
+  "data": [
+    {
+      "filter": "1_compass",
+      "keyword": {
+        "text": "YOUR PIZZA COMPASS"
+      },
+      "title": {
+        "text": "Find the nearest slice"
+      }
+    },
+    {
+      "filter": "2_card_expanded",
+      "keyword": {
+        "text": "EVERY PLACE NEARBY"
+      },
+      "title": {
+        "text": "Address, phone & directions"
+      }
+    },
+    {
+      "filter": "3_mystery",
+      "keyword": {
+        "text": "MYSTERY MODE"
+      },
+      "title": {
+        "text": "Let the pizza slice decide"
+      }
+    },
+    {
+      "filter": "4_settings",
+      "keyword": {
+        "text": "100% FREE"
+      },
+      "title": {
+        "text": "No ads, no tracking"
+      }
+    }
+  ]
+}

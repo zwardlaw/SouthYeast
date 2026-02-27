@@ -34,6 +34,20 @@
                ReferencedContainer = "container:TakeMeToPizza.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BB000010"
+               BuildableName = "TakeMeToPizzaUITests.xctest"
+               BlueprintName = "TakeMeToPizzaUITests"
+               ReferencedContainer = "container:TakeMeToPizza.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -49,6 +63,16 @@
                BlueprintIdentifier = "AA000012"
                BuildableName = "TakeMeToPizzaTests.xctest"
                BlueprintName = "TakeMeToPizzaTests"
+               ReferencedContainer = "container:TakeMeToPizza.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BB000010"
+               BuildableName = "TakeMeToPizzaUITests.xctest"
+               BlueprintName = "TakeMeToPizzaUITests"
                ReferencedContainer = "container:TakeMeToPizza.xcodeproj">
             </BuildableReference>
          </TestableReference>

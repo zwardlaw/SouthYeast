@@ -1,0 +1,16 @@
+devices([
+  "iPhone 16 Pro Max",
+  "iPhone 16 Plus"
+])
+
+scheme("TakeMeToPizza")
+
+output_directory("./fastlane/screenshots")
+
+clear_previous_screenshots(true)
+
+languages(["en-US"])
+
+launch_arguments(["--demo-mode"])
+
+override_status_bar(true)

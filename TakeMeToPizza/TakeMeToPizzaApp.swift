@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreLocation
 
 @main
 struct TakeMeToPizzaApp: App {
@@ -10,9 +11,40 @@ struct TakeMeToPizzaApp: App {
     @State private var networkMonitor: NetworkMonitor
 
     init() {
-        let loc = LocationService()
+        #if DEBUG
+        let isDemo = CommandLine.arguments.contains("--demo-mode")
+        #else
+        let isDemo = false
+        #endif
+
+        let loc = LocationService(demoMode: isDemo)
         let places = PlacesService()
         let state = AppState(locationService: loc, placesService: places)
+
+        #if DEBUG
+        if isDemo {
+            // Pre-populate services with deterministic data for screenshots.
+            loc.authorizationStatus = .authorizedWhenInUse
+            loc.location = CLLocation(latitude: 40.7306, longitude: -73.9866)
+            loc.heading = 45.0
+            loc.headingAccuracy = 10.0
+            places.places = Place.samplePlaces
+            state.selectedPlace = Place.samplePlaces.first
+            state.calibrationSkipped = true
+            state.updateCompassAngle()
+
+            UserDefaults.standard.set(true, forKey: AppStorageKey.hasCompletedOnboarding)
+            UserDefaults.standard.set(DistanceUnit.pizzaSlices.rawValue, forKey: AppStorageKey.distanceUnit)
+            UserDefaults.standard.set("apple", forKey: AppStorageKey.preferredMapsApp)
+
+            if CommandLine.arguments.contains("--mystery-mode") {
+                UserDefaults.standard.set(true, forKey: AppStorageKey.mysteryMode)
+            } else {
+                UserDefaults.standard.set(false, forKey: AppStorageKey.mysteryMode)
+            }
+        }
+        #endif
+
         _locationService = State(initialValue: loc)
         _placesService = State(initialValue: places)
         _appState = State(initialValue: state)

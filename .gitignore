@@ -35,3 +35,10 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+
+# Bundler
+vendor/bundle
+.bundle
+
+# Font copies (system fonts copied for frameit)
+fastlane/fonts/Impact.ttf
