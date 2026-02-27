@@ -302,8 +302,8 @@ private struct LoadingSkeleton: View {
 
 @MainActor
 private func openDirections(to place: Place, preferredApp: String) {
-    let lat = String(place.coordinate.latitude)
-    let lng = String(place.coordinate.longitude)
+    let lat = String(format: "%.6f", place.coordinate.latitude)
+    let lng = String(format: "%.6f", place.coordinate.longitude)
 
     if preferredApp == "google",
        let googleURL = URL(string: "comgooglemaps://"),

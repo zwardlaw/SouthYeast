@@ -24,7 +24,7 @@ struct BrutalistCard: ViewModifier {
 
 // MARK: - Brutalist Button Modifier
 
-/// Full-width action button with Bebas Neue lettering and hard black shadow.
+/// Full-width action button with Impact lettering and hard black shadow.
 struct BrutalistButton: ViewModifier {
     func body(content: Content) -> some View {
         content
