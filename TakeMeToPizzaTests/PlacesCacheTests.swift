@@ -1,6 +1,6 @@
-import XCTest
 import CoreLocation
 @testable import TakeMeToPizza
+import XCTest
 
 final class PlacesCacheTests: XCTestCase {
 
@@ -67,7 +67,7 @@ final class PlacesCacheTests: XCTestCase {
     // MARK: - Corrupt data
 
     func testCorruptDataReturnsNil() {
-        try? "not json".data(using: .utf8)?.write(to: PlacesCache.cacheURL, options: .atomic)
+        try? Data("not json".utf8).write(to: PlacesCache.cacheURL, options: .atomic)
         let loaded = PlacesCache.load(currentLocation: testLocation)
         XCTAssertNil(loaded)
     }

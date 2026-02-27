@@ -1,5 +1,5 @@
-import Observation
 import CoreLocation
+import Observation
 
 /// Central app state that wires LocationService and PlacesService into a
 /// compass angle value safe to render in SwiftUI.

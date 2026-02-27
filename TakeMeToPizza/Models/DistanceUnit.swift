@@ -3,9 +3,9 @@ import Foundation
 /// User-selectable distance display unit.
 /// RawRepresentable as String for direct @AppStorage compatibility.
 enum DistanceUnit: String, CaseIterable, Sendable {
-    case pizzaSlices = "pizzaSlices"
-    case imperial = "imperial"
-    case metric = "metric"
+    case pizzaSlices
+    case imperial
+    case metric
 
     var displayName: String {
         switch self {

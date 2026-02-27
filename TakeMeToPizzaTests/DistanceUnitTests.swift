@@ -1,5 +1,5 @@
-import XCTest
 @testable import TakeMeToPizza
+import XCTest
 
 final class DistanceUnitTests: XCTestCase {
 

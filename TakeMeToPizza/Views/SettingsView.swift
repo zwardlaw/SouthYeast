@@ -1,5 +1,5 @@
-import SwiftUI
 import StoreKit
+import SwiftUI
 
 struct SettingsView: View {
     @AppStorage(AppStorageKey.mysteryMode) private var mysteryModeEnabled: Bool = false

@@ -4,6 +4,8 @@
 excluded:
   - .build
   - DerivedData
+  - vendor
+  - TakeMeToPizzaUITests
 
 # Tune thresholds to match existing code style.
 line_length:
@@ -32,6 +34,7 @@ identifier_name:
     - y
     - i
     - b
+    - c
     - d
 
 # Opt-in rules worth enforcing.

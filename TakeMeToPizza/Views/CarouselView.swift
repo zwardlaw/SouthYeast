@@ -236,7 +236,7 @@ private struct StateCard: View {
     let symbol: String
     let title: String
     let subtitle: String
-    var retryAction: (() -> Void)? = nil
+    var retryAction: (() -> Void)?
 
     var body: some View {
         VStack(spacing: 8) {
@@ -343,7 +343,7 @@ private func openDirections(to place: Place, preferredApp: String) {
         place: Place.samplePlaces[0],
         isExpanded: false,
         mysteryModeEnabled: false,
-        onTap: {}
+        onTap: { }
     )
     .padding()
     .background(Color.pizzaBackground)
@@ -354,7 +354,7 @@ private func openDirections(to place: Place, preferredApp: String) {
         place: Place.samplePlaces[0],
         isExpanded: true,
         mysteryModeEnabled: false,
-        onTap: {}
+        onTap: { }
     )
     .padding()
     .background(Color.pizzaBackground)
@@ -365,7 +365,7 @@ private func openDirections(to place: Place, preferredApp: String) {
         place: Place.samplePlaces[0],
         isExpanded: true,
         mysteryModeEnabled: true,
-        onTap: {}
+        onTap: { }
     )
     .padding()
     .background(Color.pizzaBackground)

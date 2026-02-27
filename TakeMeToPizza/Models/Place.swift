@@ -1,5 +1,5 @@
-import Foundation
 import CoreLocation
+import Foundation
 import MapKit
 
 struct Place: Identifiable, Equatable, Codable {

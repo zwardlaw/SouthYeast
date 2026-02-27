@@ -1,6 +1,6 @@
-import Observation
 import CoreLocation
 import MapKit
+import Observation
 
 // MARK: - PlacesError
 

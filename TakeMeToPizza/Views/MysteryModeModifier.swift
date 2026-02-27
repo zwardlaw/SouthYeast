@@ -32,4 +32,3 @@ extension View {
         modifier(MysteryRedacted(isActive: isActive))
     }
 }
-

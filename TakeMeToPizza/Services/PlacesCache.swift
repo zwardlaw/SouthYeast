@@ -1,5 +1,5 @@
-import Foundation
 import CoreLocation
+import Foundation
 
 /// Disk-backed cache for nearby pizza places with a 15-minute TTL.
 /// Stores JSON in the Caches directory so the system can reclaim space.

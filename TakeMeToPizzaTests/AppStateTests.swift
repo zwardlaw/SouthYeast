@@ -1,6 +1,6 @@
-import XCTest
 import CoreLocation
 @testable import TakeMeToPizza
+import XCTest
 
 @MainActor
 final class AppStateTests: XCTestCase {

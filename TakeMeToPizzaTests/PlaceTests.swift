@@ -1,6 +1,6 @@
-import XCTest
 import CoreLocation
 @testable import TakeMeToPizza
+import XCTest
 
 final class PlaceTests: XCTestCase {
 
